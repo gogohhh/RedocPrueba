@@ -2,8 +2,9 @@ This is an **example** API to demonstrate features of the OpenAPI specification.
 
 # Introduction
 
-This API definition is intended to to be a good starting point for
-describing your API in 
+Welcome to the DynamiCore API! You can use our API to access DynamiCore API endpoints, which can get information on various accounts in our database.
+
+We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 [OpenAPI/Swagger
 format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).
@@ -18,20 +19,3 @@ the standard OpenAPI syntax, we use a few
 [vendor
 extensions](https://github.com/Redocly/Redoc/blob/master/docs/redoc-vendor-extensions.md).
 
-
-# OpenAPI Specification
-
-The goal of The OpenAPI Specification is to define a standard,
-language-agnostic interface to REST APIs which
-
-allows both humans and computers to discover and understand the capabilities
-of the service without access to source
-
-code, documentation, or through network traffic inspection. When properly
-defined via OpenAPI, a consumer can 
-
-understand and interact with the remote service with a minimal amount of
-implementation logic. Similar to what
-
-interfaces have done for lower-level programming, OpenAPI removes the
-guesswork in calling the service.
