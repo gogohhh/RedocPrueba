@@ -19,13 +19,19 @@ post:
             format: int32
         X-Expires-After:
           $ref: ../components/headers/ExpiresAfter.yaml
-      content:
-        application/json:
-          schema:
-            type: string
-          examples:
-            response:
-              value: Hello world!
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {
+                  "status": "success",
+                  "message": {
+                    "code": 1,
+                    "total": 0,
+                    "data": []
+                  }
+                }
+          required: true
         application/xml:
           schema:
             type: string
@@ -47,8 +53,4 @@ post:
               "data": []
             }
           }
-      application/xml:
-        schema:
-          type: string
-          example: Hello world!
     required: true

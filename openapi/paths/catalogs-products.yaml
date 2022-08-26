@@ -1,13 +1,10 @@
-post:
+get:
   tags:
-    - Types
-  summary: Types of products
+    - Catalogs
+  summary: Catalog of product templates
   description: 
-    $ref: ../info-types-products.md
-  operationId: type_products
-  security:
-    - api_key: []
-    - basic_auth: []
+    $ref: ../info-catalogs-clients.md
+  operationId: catalog_type_product
   responses:
     '200':
       description: OK
@@ -20,17 +17,17 @@ post:
         X-Expires-After:
           $ref: ../components/headers/ExpiresAfter.yaml
           content:
-            application/json:
-              schema:
-                type: object
-                example: {
-                  "status": "success",
-                  "message": {
-                    "code": 1,
-                    "total": 0,
-                    "data": []
-                  }
+          application/json:
+            schema:
+              type: object
+              example: {
+                "status": "success",
+                "message": {
+                  "code": 1,
+                  "total": 0,
+                  "data": []
                 }
+              }
           required: true
         application/xml:
           schema:
@@ -55,3 +52,4 @@ post:
           }
     description: Echo payload
     required: true
+  

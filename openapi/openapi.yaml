@@ -19,6 +19,8 @@ tags:
       $ref: ./info-description-auth.md
   - name: Types
     description: ''
+  - name: Catalogs
+    description: ''
   - name: Echo
     description: Example echo operations.
   - name: User
@@ -37,6 +39,10 @@ paths:
     $ref: paths/types-clients.yaml
   /types:
     $ref: 'paths/types-products.yaml'
+  /catalogs: 
+    $ref: 'paths/catalogs-clients.yaml'
+  /catalogs_products:: 
+    $ref: paths/catalogs-products.yaml
   /echo:
     $ref: paths/echo.yaml
   /pathItem:
