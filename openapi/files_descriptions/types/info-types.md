@@ -1,3 +1,4 @@
+This endpoint is used to create client types
 ### HTTP Request
 
 POST [https://api.dynamicore.io/v1/clients/types]

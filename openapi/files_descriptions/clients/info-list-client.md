@@ -1,4 +1,4 @@
-This endpoint retrieves a catalog of client templates.
+This endpoint is used to list of clients.
 ### HTTP Request
 
 GET [https://api.dynamicore.io/private/clients]

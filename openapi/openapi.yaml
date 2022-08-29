@@ -23,6 +23,8 @@ tags:
     description: ''
   - name: Clients
     description: ''
+  - name: Accounts
+    description: ''
   - name: Echo
     description: Example echo operations.
   - name: User
@@ -57,6 +59,10 @@ paths:
     $ref: paths/get-sat.yaml
   /get-credit-store:
     $ref: paths/get-credit-store.yaml
+  /create-accounts:
+    $ref: paths/accounts/create-accounts.yaml
+  /customer-account:
+    $ref: paths/accounts/customer-account.yaml
   /echo:
     $ref: paths/echo.yaml
   /pathItem:

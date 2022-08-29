@@ -1,4 +1,4 @@
-This endpoint retrieves a catalog of client templates.
+This endpoint is used to update client.
 ### HTTP Request
 
 PUT [https://api.dynamicore.io/private/clients]
