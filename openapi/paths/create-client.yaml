@@ -1,10 +1,10 @@
-get:
+post:
   tags:
-    - Catalogs
-  summary: Catalog of Type of Client
+    - Clients
+  summary: Create client
   description: 
-    $ref: ../files_descriptions/catalogs/info-catalogs-clients.md
-  operationId: catalog_type_client
+    $ref: ../info-create-client.md
+  operationId: create_client
   responses:
     '200':
       description: OK

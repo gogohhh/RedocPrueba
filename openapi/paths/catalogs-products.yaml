@@ -3,7 +3,7 @@ get:
     - Catalogs
   summary: Catalog of product templates
   description: 
-    $ref: ../info-catalogs-clients.md
+    $ref: ../files_descriptions/catalogs/info-catalogs-products.md
   operationId: catalog_type_product
   responses:
     '200':

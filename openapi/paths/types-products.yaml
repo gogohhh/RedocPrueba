@@ -3,7 +3,7 @@ post:
     - Types
   summary: Types of products
   description: 
-    $ref: ../info-types-products.md
+    $ref: ../files_descriptions/types/info-types-products.md
   operationId: type_products
   security:
     - api_key: []

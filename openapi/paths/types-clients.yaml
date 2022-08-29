@@ -3,7 +3,7 @@ post:
     - Types
   summary: Types of clients
   description: 
-    $ref: ../info-types.md
+    $ref: ../files_descriptions/types/info-types.md
   operationId: type_clients
   security:
     - api_key: []

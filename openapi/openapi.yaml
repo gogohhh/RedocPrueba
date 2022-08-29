@@ -21,6 +21,8 @@ tags:
     description: ''
   - name: Catalogs
     description: ''
+  - name: Clients
+    description: ''
   - name: Echo
     description: Example echo operations.
   - name: User
@@ -35,14 +37,18 @@ servers:
         description: Your tenant id
   - url: 'https://example.com/api/v1'
 paths:
-  /clients: 
+  /types-clients: 
     $ref: paths/types-clients.yaml
   /types:
     $ref: 'paths/types-products.yaml'
   /catalogs: 
     $ref: 'paths/catalogs-clients.yaml'
-  /catalogs_products:: 
+  /https://api.dynamicore.io/private/clients:
     $ref: paths/catalogs-products.yaml
+  /create-clients:
+    $ref: paths/create-client.yaml
+  /update-clients:
+    $ref: paths/update-client.yaml
   /echo:
     $ref: paths/echo.yaml
   /pathItem:
