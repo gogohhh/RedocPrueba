@@ -49,6 +49,14 @@ paths:
     $ref: paths/create-client.yaml
   /update-clients:
     $ref: paths/update-client.yaml
+  /list-clients:
+    $ref: paths/list-clients.yaml
+  /upload-documents:
+    $ref: paths/upload-documents.yaml
+  /get-sat:
+    $ref: paths/get-sat.yaml
+  /get-credit-store:
+    $ref: paths/get-credit-store.yaml
   /echo:
     $ref: paths/echo.yaml
   /pathItem:
