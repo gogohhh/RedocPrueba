@@ -3,7 +3,7 @@ put:
     - Clients
   summary: Update client
   description: 
-    $ref: ../info-update-client.md
+    $ref: ../files_descriptions/clients/info-update-client.md
   operationId: update_client
   responses:
     '200':

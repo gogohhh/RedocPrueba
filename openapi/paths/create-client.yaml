@@ -3,7 +3,7 @@ post:
     - Clients
   summary: Create client
   description: 
-    $ref: ../info-create-client.md
+    $ref: ../files_descriptions/clients/info-create-client.md
   operationId: create_client
   responses:
     '200':
