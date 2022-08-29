@@ -63,6 +63,10 @@ paths:
     $ref: paths/accounts/create-accounts.yaml
   /customer-account:
     $ref: paths/accounts/customer-account.yaml
+  /account-transactions:
+    $ref: paths/accounts/account-transaction.yaml
+  /account-payments:
+    $ref: paths/accounts/account-payments.yaml
   /echo:
     $ref: paths/echo.yaml
   /pathItem:
