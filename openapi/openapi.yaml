@@ -29,6 +29,8 @@ tags:
     description: ''
   - name: SAT
     description: ''
+  - name: Mifiel
+    description: ''
   - name: Echo
     description: Example echo operations.
   - name: User
@@ -77,6 +79,12 @@ paths:
     $ref: paths/marketplace/sync-data.yaml
   /get-data:
     $ref: paths/marketplace/get-data.yaml
+  /create-document:
+    $ref: paths/mifiel/create-document.yaml
+  /widget:
+    $ref: paths/mifiel/widget.yaml
+  /get-document:
+    $ref: paths/mifiel/get-document.yaml
   /echo:
     $ref: paths/echo.yaml
   /pathItem:
