@@ -25,6 +25,10 @@ tags:
     description: ''
   - name: Accounts
     description: ''
+  - name: MARKETPLACE
+    description: ''
+  - name: SAT
+    description: ''
   - name: Echo
     description: Example echo operations.
   - name: User
@@ -67,6 +71,12 @@ paths:
     $ref: paths/accounts/account-transaction.yaml
   /account-payments:
     $ref: paths/accounts/account-payments.yaml
+  /load-keys:
+    $ref: paths/marketplace/load-keys.yaml
+  /sync-data:
+    $ref: paths/marketplace/sync-data.yaml
+  /get-data:
+    $ref: paths/marketplace/get-data.yaml
   /echo:
     $ref: paths/echo.yaml
   /pathItem:
