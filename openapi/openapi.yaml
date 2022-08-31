@@ -31,12 +31,11 @@ tags:
     description: ''
   - name: Mifiel
     description: ''
-  - name: Echo
-    description: Example echo operations.
-  - name: User
-    description: Operations about users.
-  - name: Tag MUNDO
-    description: This is a tag description.
+  - name: Conekta
+    description: ''
+  - name: Errors
+    description: 
+      $ref: ./files_descriptions/errors/info-erros.md
 servers:
   - url: 'https://{tenant}/api/v1'
     variables:
@@ -85,12 +84,12 @@ paths:
     $ref: paths/mifiel/widget.yaml
   /get-document:
     $ref: paths/mifiel/get-document.yaml
-  /echo:
-    $ref: paths/echo.yaml
-  /pathItem:
-    $ref: paths/path-item.yaml
-  /pathItemWithExamples:
-    $ref: paths/path-item-with-examples.yaml
+  /create_order:
+    $ref: paths/conekta/create_order.yaml
+  /get_order:
+    $ref: paths/conekta/get_order.yaml
+  /get_reference_pending:
+    $ref: paths/conekta/get_reference.yaml
 components:
   securitySchemes:
     main_auth:
