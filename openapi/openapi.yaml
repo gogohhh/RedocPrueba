@@ -10,7 +10,7 @@ info:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
   x-logo:
-    url: 'https://docs.dynamicore.io/images/logo-bcfbcf05.png'
+    url: 'https://dynamicore.io/assets/images/fintcore.svg'
   description:
     $ref: ./info-description.md
 tags:
