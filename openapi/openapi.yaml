@@ -102,6 +102,7 @@ components:
             'write:users': modify or remove users
     api_key:
       type: apiKey
+      x-internal: true
       in: header
       name: api_key
     basic_auth:

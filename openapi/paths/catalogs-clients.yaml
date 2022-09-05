@@ -4,6 +4,7 @@ get:
   summary: Catalog of Type of Client
   description: 
     $ref: ../files_descriptions/catalogs/info-catalogs-clients.md
+  x-internal: true
   operationId: catalog_type_client
   responses:
     '200':
