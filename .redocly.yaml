@@ -1,9 +1,9 @@
 # See https://redocly.com/docs/cli/configuration/ for more information.
 apis:
+  sample@v1: 
+    root: openapi/openapinternal.yaml
   external@v1:
     root: openapi/openapi.yaml
-  internal@v1: 
-    root: openapi/openapinternal.yaml
 lint:
   extends:
     - recommended
