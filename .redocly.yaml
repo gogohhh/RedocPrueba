@@ -4,6 +4,9 @@ apis:
     root: openapi/openapinternal.yaml
   external@v1:
     root: openapi/openapi.yaml
+    styleguide:
+      decorators:
+        remove-x-internal: on
 lint:
   extends:
     - recommended

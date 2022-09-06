@@ -37,6 +37,8 @@ tags:
   - name: Errors
     description: 
       $ref: ./files_descriptions/errors/info-erros.md
+  - name: Campaigns
+    description: ''
 servers:
   - url: 'https://{tenant}/api/v1'
     variables:
@@ -91,6 +93,8 @@ paths:
     $ref: paths/conekta/get_order.yaml
   /get_reference_pending:
     $ref: paths/conekta/get_reference.yaml
+  /get_campaign:
+    $ref: paths/campaigns/get-campaigns.yaml
 components:
   securitySchemes:
     main_auth:
