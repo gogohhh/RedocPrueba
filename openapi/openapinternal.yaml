@@ -1,7 +1,8 @@
 openapi: 3.1.0
+x-internal: true
 info:
   version: 1.0.0
-  title: Dynamicore External API
+  title: Internal API
   termsOfService: 'https://example.com/terms/'
   contact:
     email: contact@example.com

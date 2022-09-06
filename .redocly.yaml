@@ -1,7 +1,9 @@
 # See https://redocly.com/docs/cli/configuration/ for more information.
 apis:
-  sample@v1: 
+  external@v1:
     root: openapi/openapi.yaml
+  internal@v1: 
+    root: openapi/openapinternal.yaml
 lint:
   extends:
     - recommended
@@ -21,3 +23,11 @@ features.openapi:
       - lang: JavaScript
       - lang: PHP
       - lang: Python
+styleguide:
+  extends:
+    - recommended
+  rules:
+    no-ambiguous-paths: error
+  decorators:
+    remove-x-internal: on
+      
