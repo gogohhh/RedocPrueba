@@ -95,6 +95,8 @@ paths:
     $ref: paths/conekta/get_reference.yaml
   /get_campaign:
     $ref: paths/campaigns/get-campaigns.yaml
+  /eval_campaign:
+    $ref: paths/campaigns/eval-campaign.yaml
 components:
   securitySchemes:
     main_auth:

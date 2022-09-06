@@ -1,0 +1,56 @@
+get:
+  tags:
+    - Campaigns
+  summary: Eval Campaign
+  description: 
+    $ref: ../../files_descriptions/campaigns/info-eval-campaign.md
+  x-internal: true
+  operationId: eval_campaign
+  responses:
+    '200':
+      description: OK
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        X-Expires-After:
+          $ref: ../../components/headers/ExpiresAfter.yaml
+          content:
+          application/json:
+            schema:
+              type: object
+              example: {
+                "status": "success",
+                "message": {
+                  "code": 1,
+                  "total": 0,
+                  "data": []
+                }
+              }
+          required: true
+        application/xml:
+          schema:
+            type: string
+        text/csv:
+          schema:
+            type: string
+    '400': 
+      description: Unauthorized
+  requestBody:
+    content:
+      application/json:
+        schema:
+          x-internal: true
+          type: object
+          example: {
+            "status": "success",
+            "message": {
+              "code": 1,
+              "total": 0,
+              "data": []
+            }
+          }
+    required: true
+  

@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: Dynamicore External API
+  title: Dynamicore API
   termsOfService: 'https://example.com/terms/'
   contact:
     email: contact@example.com
@@ -36,6 +36,8 @@ tags:
   - name: Errors
     description: 
       $ref: ./files_descriptions/errors/info-erros.md
+  - name: Campaigns
+    description: ''
 servers:
   - url: 'https://{tenant}/api/v1'
     variables:
@@ -90,6 +92,16 @@ paths:
     $ref: paths/conekta/get_order.yaml
   /get_reference_pending:
     $ref: paths/conekta/get_reference.yaml
+  /get_campaign:
+    $ref: paths/campaigns/get-campaigns.yaml
+  /eval_campaign:
+    $ref: paths/campaigns/eval-campaign.yaml
+  /get_campaigns_tytes:
+    $ref: paths/campaigns/get_campaigns_types.yaml
+  /create_campaign:
+    $ref: paths/campaigns/create_campaign.yaml
+  /update_campaign:
+    $ref: paths/campaigns/update_campaign.yaml
 components:
   securitySchemes:
     main_auth:
