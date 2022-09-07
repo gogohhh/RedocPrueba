@@ -42,6 +42,8 @@ tags:
     description: ''
   - name: Company
     description: ''
+  - name: Products
+    description: ''
 servers:
   - url: 'https://{tenant}/api/v1'
     variables:
@@ -126,6 +128,18 @@ paths:
     $ref: paths/company/update_contrab.yaml
   /update_company:
     $ref: paths/company/update_company.yaml
+  /products_types:
+    $ref: paths/products/products_types.yaml
+  /create_product_type:
+    $ref: paths/products/create_product_type.yaml
+  /update_product_type:
+    $ref: paths/products/update_product_type.yaml
+  /get_product_operation:
+    $ref: paths/products/get_product_operation.yaml
+  /create_product_operation:
+    $ref: paths/products/create_product_opration.yaml
+  /delete_product_operation:
+    $ref: paths/products/delete_product_operation.yaml
 components:
   securitySchemes:
     main_auth:
