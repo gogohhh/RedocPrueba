@@ -38,6 +38,8 @@ tags:
       $ref: ./files_descriptions/errors/info-erros.md
   - name: Campaigns
     description: ''
+  - name: Users
+    description: ''
 servers:
   - url: 'https://{tenant}/api/v1'
     variables:
@@ -102,6 +104,18 @@ paths:
     $ref: paths/campaigns/create_campaign.yaml
   /update_campaign:
     $ref: paths/campaigns/update_campaign.yaml
+  /delete_campaign:
+    $ref: paths/campaigns/delete_campaign.yaml
+  /get_users:
+    $ref: paths/users/get_users.yaml
+  /new_user:
+    $ref: paths/users/new_user.yaml
+  /get_binnacle:
+    $ref: paths/users/get_binnacle.yaml
+  /create_owner:
+    $ref: paths/users/create_owner.yaml
+  /user_client:
+    $ref: paths/users/user_client.yaml
 components:
   securitySchemes:
     main_auth:
