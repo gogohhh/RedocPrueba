@@ -40,6 +40,8 @@ tags:
     description: ''
   - name: Users
     description: ''
+  - name: Company
+    description: ''
 servers:
   - url: 'https://{tenant}/api/v1'
     variables:
@@ -116,6 +118,14 @@ paths:
     $ref: paths/users/create_owner.yaml
   /user_client:
     $ref: paths/users/user_client.yaml
+  /get_contrab:
+    $ref: paths/company/get_contrab.yaml
+  /create_contrab:
+    $ref: paths/company/create_contrab.yaml
+  /update_contrab:
+    $ref: paths/company/update_contrab.yaml
+  /update_company:
+    $ref: paths/company/update_company.yaml
 components:
   securitySchemes:
     main_auth:
