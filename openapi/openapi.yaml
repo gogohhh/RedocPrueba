@@ -50,6 +50,14 @@ tags:
     description: ''
   - name: Nodes
     description: ''
+  - name: Class
+    description: ''
+  - name: Logs
+    description: ''
+  - name: Notifications
+    description: ''
+  - name: Email
+    description: ''
 servers:
   - url: 'https://{tenant}/api/v1'
     variables:
@@ -166,6 +174,18 @@ paths:
     $ref: paths/nodes/create_node.yaml
   /update_node:
     $ref: paths/nodes/update_node.yaml
+  /get_class:
+    $ref: paths/class/get_class.yaml
+  /create_class:
+    $ref: paths/class/create_class.yaml
+  /update_class:
+    $ref: paths/class/update_class.yaml
+  /get_diagrams_logs:
+    $ref: paths/logs/get_diagrams_logs.yaml
+  /add_diagrams_logs:
+    $ref: paths/logs/add_diagrams_logs.yaml
+  /send_mail:
+    $ref: paths/notifications/send_mail.yaml
 components:
   securitySchemes:
     main_auth:
