@@ -44,6 +44,12 @@ tags:
     description: ''
   - name: Products
     description: ''
+  - name: Diagrams
+    description: ''
+  - name: Flows
+    description: ''
+  - name: Nodes
+    description: ''
 servers:
   - url: 'https://{tenant}/api/v1'
     variables:
@@ -128,6 +134,12 @@ paths:
     $ref: paths/company/update_contrab.yaml
   /update_company:
     $ref: paths/company/update_company.yaml
+  /get_products:
+    $ref: paths/products/get_products.yaml
+  /create_product:
+    $ref: paths/products/create_product.yaml
+  /update_product:
+    $ref: paths/products/update_product.yaml
   /products_types:
     $ref: paths/products/products_types.yaml
   /create_product_type:
@@ -140,6 +152,20 @@ paths:
     $ref: paths/products/create_product_opration.yaml
   /delete_product_operation:
     $ref: paths/products/delete_product_operation.yaml
+  /get_flows:
+    $ref: paths/flows/get_flows.yaml
+  /create_flow:
+    $ref: paths/flows/create_flow.yaml
+  /update_flow:
+    $ref: paths/flows/update_flow.yaml
+  /get_flow_types:
+    $ref: paths/flows/get_flow_types.yaml
+  /get_node:
+    $ref: paths/nodes/get_node.yaml
+  /create_node:
+    $ref: paths/nodes/create_node.yaml
+  /update_node:
+    $ref: paths/nodes/update_node.yaml
 components:
   securitySchemes:
     main_auth:
