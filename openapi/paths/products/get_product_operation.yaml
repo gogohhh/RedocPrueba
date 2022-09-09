@@ -25,8 +25,21 @@ get:
                 "status": "success",
                 "message": {
                   "code": 1,
-                  "total": 0,
-                  "data": []
+                  "total": 2,
+                  "data": [
+                    {
+                        "id": 5,
+                        "name": "Reverso de Cargo a Tarjeta",
+                        "operation": 102,
+                        "product": 5
+                    },
+                    {
+                        "id": 4,
+                        "name": "Consulta de Saldo",
+                        "operation": 103,
+                        "product": 5
+                    }   
+                  ]
                 }
               }
           required: true
@@ -48,8 +61,21 @@ get:
             "status": "success",
             "message": {
               "code": 1,
-              "total": 0,
-              "data": []
+              "total": 2,
+              "data": [
+                {
+                    "id": 5,
+                    "name": "Reverso de Cargo a Tarjeta",
+                    "operation": 102,
+                    "product": 5
+                },
+                {
+                    "id": 4,
+                    "name": "Consulta de Saldo",
+                    "operation": 103,
+                    "product": 5
+                }   
+              ]
             }
           }
     required: true

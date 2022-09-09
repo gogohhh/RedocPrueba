@@ -22,12 +22,12 @@ put:
             schema:
               type: object
               example: {
-                "id": "1", 
-                "name": "miName", 
-                "type": "", 
-                "company": "", 
-                "enabled": "", 
-                "description": "prospec"
+                "id": "175", 
+                "name": "Notificación de pago - 3 dias antes de pago", 
+                "type": "2", 
+                "company": "3027", 
+                "enabled": "1", 
+                "description": "3 dias antes de pago"
                 }
           required: true
         application/xml:
@@ -45,12 +45,12 @@ put:
           x-internal: true
           type: object
           example: {
-            "id": "1", 
-            "name": "miName", 
-            "type": "", 
-            "company": "", 
-            "enabled": "", 
-            "description": "prospec"
+            "id": "175", 
+            "name": "Notificación de pago - 3 dias antes de pago", 
+            "type": "2", 
+            "company": "3027", 
+            "enabled": "1", 
+            "description": "3 dias antes de pago"
             }
     required: true
   

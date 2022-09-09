@@ -25,8 +25,17 @@ get:
                 "status": "success",
                 "message": {
                   "code": 1,
-                  "total": 0,
-                  "data": []
+                  "total": 1,
+                  "data": [
+                    {
+                      "id": 27,
+                      "company": 2251,
+                      "cron": "10 11 * * *",
+                      "node": 216,
+                      "user_role": "007fcdd6-e03b-4e6d-7725-3ac9ed4a15cd",
+                      "command": "/usr/bin/python3 /usr/src/app/start.py >> /usr/src/app/myjob.log 2>&1"
+                    }
+                  ]
                 }
               }
           required: true
@@ -48,8 +57,17 @@ get:
             "status": "success",
             "message": {
               "code": 1,
-              "total": 0,
-              "data": []
+              "total": 1,
+              "data": [
+                  {
+                    "id": 27,
+                    "company": 2251,
+                    "cron": "10 11 * * *",
+                    "node": 216,
+                    "user_role": "007fcdd6-e03b-4e6d-7725-3ac9ed4a15cd",
+                    "command": "/usr/bin/python3 /usr/src/app/start.py >> /usr/src/app/myjob.log 2>&1"
+                  }
+              ]
             }
           }
     required: true

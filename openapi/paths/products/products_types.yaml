@@ -24,11 +24,48 @@ get:
               example: {
                 "status": "success",
                 "message": {
-                  "code": 1,
-                  "total": 0,
-                  "data": []
+                    "code": 1,
+                    "total": 2,
+                    "data": [
+                        {
+                            "id": 92,
+                            "name": "Credito",
+                            "company": 3027,
+                            "description": "Ejemplo template #3",
+                            "alias": "Credito",
+                            "template": [
+                                {
+                                    "name": "start_date",
+                                    "type": "datetime",
+                                    "field": 67,
+                                    "score": 1,
+                                    "validate": {},
+                                    "displayname": "Día",
+                                    "displaytype": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 93,
+                            "name": "Credito",
+                            "company": 3027,
+                            "description": "Ejemplo template #3",
+                            "alias": "MasterCel",
+                            "template": [
+                                {
+                                    "name": "start_date",
+                                    "type": "datetime",
+                                    "field": 67,
+                                    "score": 1,
+                                    "validate": {},
+                                    "displayname": "Día mensual de pago",
+                                    "displaytype": "string"
+                                }
+                            ]
+                        }
+                    ]
                 }
-              }
+            }
           required: true
         application/xml:
           schema:
@@ -48,9 +85,46 @@ get:
             "status": "success",
             "message": {
               "code": 1,
-              "total": 0,
-              "data": []
+              "total": 2,
+              "data": [
+                  {
+                      "id": 92,
+                      "name": "Credito",
+                      "company": 3027,
+                      "description": "Ejemplo template #3",
+                      "alias": "Credito",
+                      "template": [
+                          {
+                              "name": "start_date",
+                              "type": "datetime",
+                              "field": 67,
+                              "score": 1,
+                              "validate": {},
+                              "displayname": "Día",
+                              "displaytype": "string"
+                          }
+                      ]
+                  },
+                  {
+                      "id": 93,
+                      "name": "Credito",
+                      "company": 3027,
+                      "description": "Ejemplo template #3",
+                      "alias": "Alias Example",
+                      "template": [
+                          {
+                              "name": "start_date",
+                              "type": "datetime",
+                              "field": 67,
+                              "score": 1,
+                              "validate": {},
+                              "displayname": "Día mensual de pago",
+                              "displaytype": "string"
+                          }
+                      ]
+                  }
+              ]
             }
-          }
+        }
     required: true
   

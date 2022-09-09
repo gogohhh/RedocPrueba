@@ -24,9 +24,19 @@ get:
               example: {
                 "status": "success",
                 "message": {
-                  "code": 1,
-                  "total": 0,
-                  "data": []
+                    "code": 1,
+                    "data": [
+                        {
+                            "id": 1200,
+                            "role": 1070,
+                            "group": "Grupo 1",
+                            "username": "+5244444400",
+                            "created_at": "2022-05-10T16:40:56",
+                            "description": "Web Client",
+                            "external_id": "56fd88d5-530e-414a-9933-cc7c28e06a3c",
+                            "last_access": "2022-05-10T16:53:01"
+                        }
+                    ]
                 }
               }
           required: true
@@ -48,8 +58,18 @@ get:
             "status": "success",
             "message": {
               "code": 1,
-              "total": 0,
-              "data": []
+              "data": [
+                {
+                  "id": 1200,
+                  "role": 1070,
+                  "group": "Grupo 1",
+                  "username": "+5244444400",
+                  "created_at": "2022-05-10T16:40:56",
+                  "description": "Web Client",
+                  "external_id": "56fd88d5-530e-414a-9933-cc7c28e06a3c",
+                  "last_access": "2022-05-10T16:53:01"
+                }
+              ]
             }
           }
     required: true

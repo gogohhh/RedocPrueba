@@ -24,11 +24,167 @@ get:
               example: {
                 "status": "success",
                 "message": {
-                  "code": 1,
-                  "total": 0,
-                  "data": []
+                    "code": 1,
+                    "total": 5,
+                    "data": [
+                        {
+                            "id": 123,
+                            "name": "Notificación de pago - 3 dias antes de pago",
+                            "type": 2,
+                            "company": 3027,
+                            "description": "3 dias antes de pago",
+                            "enabled": "1",
+                            "product": "87",
+                            "tag": null,
+                            "node": 500,
+                            "position": null,
+                            "loop": null,
+                            "loop_node": 503,
+                            "trigger": {
+                                "link": 1,
+                                "config": {
+                                    "id": 78,
+                                    "cron": "0 15 * * *"
+                                }
+                            },
+                            "actions": [
+                                {
+                                    "link": 34,
+                                    "config": {
+                                        "id": "76",
+                                        "node": 504
+                                    }
+                                }
+                            ],
+                            "flow": 185
+                        },
+                        {
+                            "id": 125,
+                            "name": "Recordatorio - 1 a 5 dias de Mora",
+                            "type": 2,
+                            "company": 3027,
+                            "description": "Recordatorio - 1 a 5 dias de Mora",
+                            "enabled": "1",
+                            "product": "87",
+                            "tag": null,
+                            "node": 510,
+                            "position": null,
+                            "loop": null,
+                            "loop_node": 513,
+                            "trigger": {
+                                "link": 1,
+                                "config": {
+                                    "id": 80,
+                                    "cron": "0 15 * * *"
+                                }
+                            },
+                            "actions": [
+                                {
+                                    "link": 34,
+                                    "config": {
+                                        "id": "78",
+                                        "node": 514
+                                    }
+                                }
+                            ],
+                            "flow": 187
+                        },
+                        {
+                            "id": 150,
+                            "name": "Recordatorio - 6 a 15 dias de Mora",
+                            "type": 2,
+                            "company": 3027,
+                            "description": "Recordatorio - 6 a 15 dias de Mora",
+                            "enabled": "1",
+                            "product": "87",
+                            "tag": null,
+                            "node": 595,
+                            "position": null,
+                            "loop": null,
+                            "loop_node": 598,
+                            "trigger": {
+                                "link": 1,
+                                "config": {
+                                    "id": 107,
+                                    "cron": "0 1,19 * * *"
+                                }
+                            },
+                            "actions": [
+                                {
+                                    "link": 34,
+                                    "config": {
+                                        "id": "106",
+                                        "node": 599
+                                    }
+                                }
+                            ],
+                            "flow": 202
+                        },
+                        {
+                            "id": 124,
+                            "name": "Día de Pago",
+                            "type": 2,
+                            "company": 3027,
+                            "description": "Recordatorio día de pago",
+                            "enabled": "1",
+                            "product": "87",
+                            "tag": null,
+                            "node": 505,
+                            "position": null,
+                            "loop": null,
+                            "loop_node": 508,
+                            "trigger": {
+                                "link": 1,
+                                "config": {
+                                    "id": 79,
+                                    "cron": "0 14 * * *"
+                                }
+                            },
+                            "actions": [
+                                {
+                                    "link": 34,
+                                    "config": {
+                                        "id": "77",
+                                        "node": 509
+                                    }
+                                }
+                            ],
+                            "flow": 186
+                        },
+                        {
+                            "id": 149,
+                            "name": "Notificación de pago - 1 día antes del pago",
+                            "type": 2,
+                            "company": 3027,
+                            "description": "Notificación de pago - 1 día antes del pago",
+                            "enabled": "1",
+                            "product": "87",
+                            "tag": null,
+                            "node": 561,
+                            "position": null,
+                            "loop": null,
+                            "loop_node": 564,
+                            "trigger": {
+                                "link": 1,
+                                "config": {
+                                    "id": 105,
+                                    "cron": "0 15 * * *"
+                                }
+                            },
+                            "actions": [
+                                {
+                                    "link": 34,
+                                    "config": {
+                                        "id": "105",
+                                        "node": 565
+                                    }
+                                }
+                            ],
+                            "flow": 197
+                        }
+                    ]
                 }
-              }
+            }
           required: true
         application/xml:
           schema:
@@ -47,10 +203,166 @@ get:
           example: {
             "status": "success",
             "message": {
-              "code": 1,
-              "total": 0,
-              "data": []
+                "code": 1,
+                "total": 5,
+                "data": [
+                    {
+                        "id": 123,
+                        "name": "Notificación de pago - 3 dias antes de pago",
+                        "type": 2,
+                        "company": 3027,
+                        "description": "3 dias antes de pago",
+                        "enabled": "1",
+                        "product": "87",
+                        "tag": null,
+                        "node": 500,
+                        "position": null,
+                        "loop": null,
+                        "loop_node": 503,
+                        "trigger": {
+                            "link": 1,
+                            "config": {
+                                "id": 78,
+                                "cron": "0 15 * * *"
+                            }
+                        },
+                        "actions": [
+                            {
+                                "link": 34,
+                                "config": {
+                                    "id": "76",
+                                    "node": 504
+                                }
+                            }
+                        ],
+                        "flow": 185
+                    },
+                    {
+                        "id": 125,
+                        "name": "Recordatorio - 1 a 5 dias de Mora",
+                        "type": 2,
+                        "company": 3027,
+                        "description": "Recordatorio - 1 a 5 dias de Mora",
+                        "enabled": "1",
+                        "product": "87",
+                        "tag": null,
+                        "node": 510,
+                        "position": null,
+                        "loop": null,
+                        "loop_node": 513,
+                        "trigger": {
+                            "link": 1,
+                            "config": {
+                                "id": 80,
+                                "cron": "0 15 * * *"
+                            }
+                        },
+                        "actions": [
+                            {
+                                "link": 34,
+                                "config": {
+                                    "id": "78",
+                                    "node": 514
+                                }
+                            }
+                        ],
+                        "flow": 187
+                    },
+                    {
+                        "id": 150,
+                        "name": "Recordatorio - 6 a 15 dias de Mora",
+                        "type": 2,
+                        "company": 3027,
+                        "description": "Recordatorio - 6 a 15 dias de Mora",
+                        "enabled": "1",
+                        "product": "87",
+                        "tag": null,
+                        "node": 595,
+                        "position": null,
+                        "loop": null,
+                        "loop_node": 598,
+                        "trigger": {
+                            "link": 1,
+                            "config": {
+                                "id": 107,
+                                "cron": "0 1,19 * * *"
+                            }
+                        },
+                        "actions": [
+                            {
+                                "link": 34,
+                                "config": {
+                                    "id": "106",
+                                    "node": 599
+                                }
+                            }
+                        ],
+                        "flow": 202
+                    },
+                    {
+                        "id": 124,
+                        "name": "Día de Pago",
+                        "type": 2,
+                        "company": 3027,
+                        "description": "Recordatorio día de pago",
+                        "enabled": "1",
+                        "product": "87",
+                        "tag": null,
+                        "node": 505,
+                        "position": null,
+                        "loop": null,
+                        "loop_node": 508,
+                        "trigger": {
+                            "link": 1,
+                            "config": {
+                                "id": 79,
+                                "cron": "0 14 * * *"
+                            }
+                        },
+                        "actions": [
+                            {
+                                "link": 34,
+                                "config": {
+                                    "id": "77",
+                                    "node": 509
+                                }
+                            }
+                        ],
+                        "flow": 186
+                    },
+                    {
+                        "id": 149,
+                        "name": "Notificación de pago - 1 día antes del pago",
+                        "type": 2,
+                        "company": 3027,
+                        "description": "Notificación de pago - 1 día antes del pago",
+                        "enabled": "1",
+                        "product": "87",
+                        "tag": null,
+                        "node": 561,
+                        "position": null,
+                        "loop": null,
+                        "loop_node": 564,
+                        "trigger": {
+                            "link": 1,
+                            "config": {
+                                "id": 105,
+                                "cron": "0 15 * * *"
+                            }
+                        },
+                        "actions": [
+                            {
+                                "link": 34,
+                                "config": {
+                                    "id": "105",
+                                    "node": 565
+                                }
+                            }
+                        ],
+                        "flow": 197
+                    }
+                ]
             }
-          }
+        }
     required: true
   

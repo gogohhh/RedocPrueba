@@ -24,11 +24,22 @@ get:
               example: {
                 "status": "success",
                 "message": {
-                  "code": 1,
-                  "total": 0,
-                  "data": []
+                    "code": 1,
+                    "total": 2,
+                    "data": [
+                        {
+                            "id": 2,
+                            "name": "Grupos",
+                            "weight": 0
+                        },
+                        {
+                            "id": 1,
+                            "name": "Cuantificables",
+                            "weight": 1
+                        }
+                    ]
                 }
-              }
+            }
           required: true
         application/xml:
           schema:
@@ -47,10 +58,21 @@ get:
           example: {
             "status": "success",
             "message": {
-              "code": 1,
-              "total": 0,
-              "data": []
+                "code": 1,
+                "total": 2,
+                "data": [
+                    {
+                        "id": 2,
+                        "name": "Grupos",
+                        "weight": 0
+                    },
+                    {
+                        "id": 1,
+                        "name": "Cuantificables",
+                        "weight": 1
+                    }
+                ]
             }
-          }
+        }
     required: true
   

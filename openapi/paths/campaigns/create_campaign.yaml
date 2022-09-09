@@ -22,13 +22,13 @@ post:
             schema:
               type: object
               example: {
-                "status": "success",
-                "message": {
-                  "code": 1,
-                  "total": 0,
-                  "data": []
+                "id": "175", 
+                "name": "Notificación de pago - 3 dias antes de pago", 
+                "type": "2", 
+                "company": "3027", 
+                "enabled": "1", 
+                "description": "3 dias antes de pago"
                 }
-              }
           required: true
         application/xml:
           schema:
@@ -45,12 +45,12 @@ post:
           x-internal: true
           type: object
           example: {
-            "status": "success",
-            "message": {
-              "code": 1,
-              "total": 0,
-              "data": []
+            "id": "175", 
+            "name": "Notificación de pago - 3 dias antes de pago", 
+            "type": "2", 
+            "company": "3027", 
+            "enabled": "1", 
+            "description": "3 dias antes de pago"
             }
-          }
     required: true
   
