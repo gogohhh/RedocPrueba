@@ -1,7 +1,0 @@
-get:
-  tags:
-    - Mifiel
-  summary: Widget
-  description: 
-    $ref: ../../files_descriptions/mifiel/info-widget.md
-  operationId: widget
