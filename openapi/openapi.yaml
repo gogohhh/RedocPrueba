@@ -203,3 +203,6 @@ components:
     basic_auth:
       type: http
       scheme: basic
+security:
+  - main_auth: []
+  - api_key: []
