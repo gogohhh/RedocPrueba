@@ -1,0 +1,101 @@
+get:
+  tags:
+    - Conekta
+  summary: Get Reference Pending
+  description: 
+    $ref: ../../files_descriptions/conekta/info-get-reference.md
+  operationId: get_reference
+  responses:
+    '200':
+      description: OK
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        X-Expires-After:
+          $ref: ../../components/headers/ExpiresAfter.yaml
+          content:
+          application/json:
+            schema:
+              type: object
+              example: {
+                "status": "success",
+                "message": {
+                  "code": 1,
+                  "total": 1,
+                  "data": [
+                    {
+                      "id": "ord_2rQPaj3neXQQmH7fp",
+                      "channel": "oxxo_cash",
+                      "amount": 1000,
+                      "operation": 184,
+                      "account": 326,
+                      "company": 2941,
+                      "active": "0",
+                      "config": {},
+                      "charge": {
+                        "service_name": "OxxoPay",
+                        "barcode_url": "https://s3.amazonaws.com/cash_payment_barcodes/sandbox_reference.png",
+                        "object": "cash_payment",
+                        "type": "oxxo",
+                        "expires_at": 1649289600,
+                        "store_name": "OXXO",
+                        "reference": "98000012463900",
+                        "unit_price": 10,
+                        "currency": "MXN",
+                        "quantity": 1
+                      }
+                    }
+                  ]
+                }
+              }
+          required: true
+        application/xml:
+          schema:
+            type: string
+        text/csv:
+          schema:
+            type: string
+    '400': 
+      description: Unauthorized
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          example: {
+            "status": "success",
+            "message": {
+              "code": 1,
+              "total": 1,
+              "data": [
+                {
+                  "id": "ord_2rQPaj3neXQQmH7fp",
+                  "channel": "oxxo_cash",
+                  "amount": 1000,
+                  "operation": 184,
+                  "account": 326,
+                  "company": 2941,
+                  "active": "0",
+                  "config": {},
+                  "charge": {
+                    "service_name": "OxxoPay",
+                    "barcode_url": "https://s3.amazonaws.com/cash_payment_barcodes/sandbox_reference.png",
+                    "object": "cash_payment",
+                    "type": "oxxo",
+                    "expires_at": 1649289600,
+                    "store_name": "OXXO",
+                    "reference": "98000012463900",
+                    "unit_price": 10,
+                    "currency": "MXN",
+                    "quantity": 1
+                  }
+                }
+              ]
+            }
+          }
+    description: Echo payload
+    required: true
+  

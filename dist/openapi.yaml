@@ -1,0 +1,5165 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Dynamicore API
+  termsOfService: https://example.com/terms/
+  contact:
+    email: contact@example.com
+    url: http://example.com/contact
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://dynamicore.io/assets/images/fintcore.svg
+  description: >+
+    This is an **example** API to demonstrate features of the OpenAPI
+    specification.
+
+
+    # Introduction
+
+
+    Welcome to the DynamiCore API! You can use our API to access DynamiCore API
+    endpoints, which can get information on various accounts in our database.
+
+
+    We have language bindings in Shell, Ruby, Python, and JavaScript! You can
+    view code examples in the dark area to the right, and you can switch the
+    programming language of the examples with the tabs in the top right.
+
+
+    [OpenAPI/Swagger
+
+    format](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.2.md).
+
+
+    It also demonstrates features of the
+
+    [create-openapi-repo](https://github.com/Redocly/create-openapi-repo) tool
+
+    and 
+
+
+    the [Redoc](https://github.com/Redocly/Redoc) documentation engine. Beyond
+
+    the standard OpenAPI syntax, we use a few 
+
+
+    [vendor
+
+    extensions](https://github.com/Redocly/Redoc/blob/master/docs/redoc-vendor-extensions.md).
+
+tags:
+  - name: Authentication
+    description: >-
+      Message hash key authentication (HMAC) is a specific construct for
+      calculating a message authentication code, which involves a cryptographic
+      hash function in combination with a cryptographic secret key.
+
+
+      Like any MAC, it can be used to simultaneously verify data integrity and
+      authentication of a message. The SHA-512 cryptographic hash function is
+      used.
+
+
+      The hash function breaks a message into a block of a fixed size and
+      iterates over them with a compression function. The cryptographic strength
+      of HMAC depends on the cryptographic power of the underlying hash
+      function, the size of its hash output and quality of the key.
+  - name: Types
+    description: ''
+  - name: Catalogs
+    description: ''
+  - name: Clients
+    description: ''
+  - name: Accounts
+    description: ''
+  - name: MARKETPLACE
+    description: ''
+  - name: SAT
+    description: ''
+  - name: Mifiel
+    description: ''
+  - name: Conekta
+    description: ''
+  - name: Errors
+    description: >-
+      'DynamiCore uses conventional HTTP response codes to indicate the success
+      or failure of an API request. In general: Codes in the 2xx range indicate
+      success. Codes in the 4xx range indicate an error that failed given the
+      information provided (e.g., a required parameter was omitted, a charge
+      failed, etc.). Codes in the 5xx range indicate an error with Ictineo
+      servers (these are rare).'
+
+
+      ## HTTP STATUS CODE SUMMARY
+
+
+      | Error Code | Meaning |
+
+      | --------- | --------- |
+
+      | 401 | Unauthorized |
+
+      | 403 | Forbidden |
+
+      | 404 | Not Found - The resource you are trying to access cannot be found
+      |
+
+      | 409 | Conflict - A conflict occurred on the server while processing your
+      request |
+
+      | 500 | Internal Server Error - A serious error occurred on the server,
+      please try again later |
+  - name: Campaigns
+    description: ''
+  - name: Users
+    description: ''
+  - name: Company
+    description: ''
+  - name: Products
+    description: ''
+  - name: Diagrams
+    description: ''
+  - name: Flows
+    description: ''
+  - name: Nodes
+    description: ''
+  - name: Class
+    description: ''
+  - name: Logs
+    description: ''
+  - name: Notifications
+    description: ''
+  - name: Email
+    description: ''
+servers:
+  - url: https://{tenant}/api/v1
+    variables:
+      tenant:
+        default: www
+        description: Your tenant id
+  - url: https://example.com/api/v1
+paths:
+  /types-clients:
+    post:
+      tags:
+        - Types
+      summary: Types of clients
+      description: >-
+        This endpoint is used to create client types
+
+        ### HTTP Request
+
+
+        POST [https://api.dynamicore.io/v1/clients/types]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | name | Y | String | Name of client type | Persona Fisica |
+
+        | description| O | String | Description of client type | Template para
+        registro de personas fisicas en SOFOM |
+
+        | pii[lastname] | Y | String | Lastname of client | Lopez |
+      operationId: type_clients
+      security:
+        - api_key: []
+        - basic_auth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    example:
+                      status: success
+                      message:
+                        code: 1
+                        total: 0
+                        data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /types:
+    post:
+      tags:
+        - Types
+      summary: Types of products
+      description: >-
+        This endpoint is used to create products types
+
+        ### HTTP Request
+
+
+        POST [https://api.dynamicore.io/v1/products/types]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | name | Y | String | Name of client type | Persona Fisica |
+
+        | description| O | String | Description of client type | Template para
+        registro de personas fisicas en SOFOM |
+
+        | pii[lastname] | Y | String | Lastname of client | Lopez |
+      operationId: type_products
+      security:
+        - api_key: []
+        - basic_auth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    example:
+                      status: success
+                      message:
+                        code: 1
+                        total: 0
+                        data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /catalogs:
+    get:
+      tags:
+        - Catalogs
+      summary: Catalog of Type of Client
+      description: |-
+        This endpoint retrieves a catalog of client templates.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/v1/catalog/fields/client]
+      x-internal: true
+      operationId: catalog_type_client
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /https://api.dynamicore.io/private/clients:
+    get:
+      tags:
+        - Catalogs
+      summary: Catalog of product templates
+      description: |-
+        This endpoint retrieves a catalog of product templates.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/v1/catalog/fields/product]
+      operationId: catalog_type_product
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /create-clients:
+    post:
+      tags:
+        - Clients
+      summary: Create client
+      description: |-
+        This endpoint is used to create client.
+        ### HTTP Request
+
+        POST [https://api.dynamicore.io/private/clients]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | client_type | Y | String | Type of client | 17 |
+        | pii[firstname] | Y | String | Firstname of client | Rafael |
+        | pii[lastname] | Y | String | Lastname of client | Lopez |
+        | pii[rfc] | Y | String | RFC of client | RALO101086GT4 |
+        | pii[email] | Y | String | Email of client | email@google.com |
+      operationId: create_client
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /update-clients:
+    put:
+      tags:
+        - Clients
+      summary: Update client
+      description: |-
+        This endpoint is used to update client.
+        ### HTTP Request
+
+        PUT [https://api.dynamicore.io/private/clients]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | Y | String | ID Clients | 1 |
+        | pii[firstname] | Y | String | Firstname of client | Rafael |
+        | pii[lastname] | Y | String | Lastname of client | Lopez |
+        | pii[rfc] | Y | String | RFC of client | RALO101086GT4 |
+        | pii[email] | Y | String | Email of client | email@google.com |
+      operationId: update_client
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /list-clients:
+    get:
+      tags:
+        - Clients
+      summary: List of clients
+      description: |-
+        This endpoint is used to list of clients.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/private/clients]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | O | String | Client Identifier | 1 |
+      operationId: list_client
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /upload-documents:
+    post:
+      tags:
+        - Clients
+      summary: Upload documents
+      description: >-
+        This endpoint is used to upload documents to client.
+
+        ### HTTP Request
+
+
+        POST
+        [https://api.dynamicore.io/files/users/upload/:client_id/:pii[acta_constitutiva]]
+
+
+        ### FormData Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | file | Y | Array of files |  | acta_constitutiva.pdf, rfc.pdf |
+      operationId: update_documents
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /get-sat:
+    get:
+      tags:
+        - Clients
+      summary: Get SAT
+      description: |-
+        This endpoint is used to get SAT data.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/v1/clients/:client_id/sat]
+      operationId: get_sat
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get-credit-store:
+    get:
+      tags:
+        - Clients
+      summary: Get Credit Store
+      description: |-
+        This endpoint is used to get Credit Score.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/v1/clients/:client_id/score]
+      operationId: get_credit_store
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /create-accounts:
+    post:
+      tags:
+        - Accounts
+      summary: Create Account
+      description: >-
+        This endpoint is used to create account.
+
+        ### HTTP Request
+
+
+        POST [https://api.dynamicore.io/v1/accounts]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | client_id | Y | String | Client Identifier | 1 |
+
+        | product | Y | String | Product Identifier | 6 |
+
+        | enabled | Y | String | Enabled of product. . Values: Active -> 1,
+        Inactive -> 0 | 1 |
+
+        | currency | Y | String | Product currency | 484 |
+      operationId: create_account
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /customer-account:
+    get:
+      tags:
+        - Accounts
+      summary: Customer Account
+      description: |-
+        This endpoint is used to customer accounts.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/v1/accounts]
+
+        ### Query Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | Y | String | Account Identifier | 1 |
+        | client_id | Y | String | Client Identifier | 1 |
+      operationId: customer_account
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /account-transactions:
+    get:
+      tags:
+        - Accounts
+      summary: Account transactions
+      description: |-
+        This endpoint is used to get account transactions.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/v1/accounts/:account_id/transactions]
+      operationId: account_transactions
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /account-payments:
+    get:
+      tags:
+        - Accounts
+      summary: Account payments
+      description: |-
+        This endpoint is used to get account payments.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/v1/accounts/:account_id/payments]
+      operationId: account_payments
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /load-keys:
+    post:
+      tags:
+        - SAT
+      summary: Load Keys
+      description: "This endpoint is used to keys for SAT consult.\n### HTTP Request\n\nPOST [https://api.dynamicore.io/internal/sat/sat_key]\n\n### Parameters\n\n| Parameter | Required | Type | Description | Example |\n| --------- | --------- | --------- | --------- |--------- |\n| client | Y | Number | Client Identifier | 1 |\n| type | Y | String | \tType of keys for SAT consult. Values: ciec(You need to send the pas parameter), efirma(You need to send the pas, key and cer parameters) | ciec |\n| pass | Y | String | Password of keys | |\n| key | O | String | Private key. File of type key in Base64 | file.key |\n| cer | O | String | Certificate. File of type cer in Base64 | file.cer |"
+      operationId: load_keys
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /sync-data:
+    post:
+      tags:
+        - SAT
+      summary: Sync Data
+      description: >-
+        This endpoint is used to sync of the SAT data. Its execute is async to
+        obtain data you should used the endpoint Get Data.
+
+        ### HTTP Request
+
+
+        POST [https://api.dynamicore.io/internal/sat/sat_key]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | client | Y | Number | Client Identifier | 1 |
+
+        | start | Y | String | Start of date to obtain data | 2021-01-01 |
+
+        | end | Y | String | End of date to obtain data | 2021-11-31 |
+      operationId: sync_data
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /get-data:
+    get:
+      tags:
+        - SAT
+      summary: Get Data
+      description: |-
+        This endpoint is used to get data of SAT.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/private/sat/data]
+
+        ### Query Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | client | Y | Number | Client Identifier | 1 |
+        | start | O | String | Start of date to obtain data | 2021-01-01 |
+        | end | O | String | End of date to obtain data | 2021-11-31 |
+        | limit | O | String | Limit query results | 50 |
+        | page | O | String | Paginate query results | 1 |
+      operationId: get_data
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        description: Echo payload
+        required: true
+  /create-document:
+    get:
+      tags:
+        - Mifiel
+      summary: Create Document
+      description: >-
+        You must first upload the document here. So that later it generates the
+        document to sign.
+
+
+        This endpoint is used to create a document that will be signed.
+
+
+        To sign the document you must load the widget.
+
+        ### HTTP Request
+
+
+        POST [https://api.dynamicore.io/marketplace/apps/mifiel/documents]
+
+
+        ### Query Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | id | Y | Number | id of client | 424 |
+
+        | type | Y | String | type | client |
+
+        | field | Y | String | field | acceptance_bc |
+
+        | signatories | Y | Array of objects | A list of Signatory Object |
+        [{"email":"","name": "","tax_id": ""}] |
+
+        | external_id | O | String | Your unique identifier |
+        Mifiel-0000000000000001 |
+
+        | day_to_expire | O | Integer | Number of days the document expires | 1
+        |
+
+        | send_invites | O | boolean | Set True if you want Mifiel to email
+        invitations to attendees. If your participants will sign in the widget
+        embedded within your application send False. | "true" |
+
+        | remind_every | O | Integer | Signing reminders will be sent to those
+        who have not signed (if send_mail is enabled) | 0 |
+
+        | viewers | O | Array of objects | List of emails from whom they will
+        receive notifications (if enabled) every time someone signs and they
+        will receive a copy of the signed document. | [{"email":"","name": ""}]
+        |
+      operationId: create_document
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 1
+                      data:
+                        - reference: a6ace6d3-4b9e-4c43-adff-451fd3bd12c1
+                          id: '424'
+                          type: client
+                          field: acceptance_bc
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 1
+                  data:
+                    - reference: a6ace6d3-4b9e-4c43-adff-451fd3bd12c1
+                      id: '424'
+                      type: client
+                      field: acceptance_bc
+        description: Echo payload
+        required: true
+  /widget:
+    get:
+      tags:
+        - Mifiel
+      summary: Widget
+      description: >-
+        The signing widget is a tool that you can embed in your application so
+        that stakeholders sign or approve documents in an iframe without leaving
+        your website.
+
+
+        Note: It is not necessary for stakeholders to be registered in Mifiel In
+        order to sign or approve a document.
+
+
+        To integrate it in your application, copy this <script
+        src="https://www.mifiel.com/sign-snippet-v1.0.0.min.js"></script> and
+        paste it before closing the </ body > tag in your page.
+
+
+        Each signer or reviewer of a document has a unique identifier to access
+        the document. Make sure to insert the stakeholder’s widget id (which you
+        received when creating the document) so that the stakeholders visualize
+        the correct document in the signing widget.
+
+
+        Note: If not the html code block click here!.
+      operationId: widget
+  /get-document:
+    get:
+      tags:
+        - Mifiel
+      summary: Get Document
+      description: |-
+        This endpoint is used to get Document data.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/marketplace/apps/mifiel/documents/:id]
+      operationId: get_document
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 1
+                      data:
+                        - id: a6ace6d3-4b9e-4c43-adff-451fd3bd12c1
+                          send_mail: true
+                          signed_hash: null
+                          name: null
+                          signed_by_all: true
+                          signed: true
+                          signed_at: '2022-02-25T23:31:19.950Z'
+                          created_at: '2022-02-25T23:27:17.758Z'
+                          burned_at: null
+                          status:
+                            - 1
+                            - SIGNED
+                          external_id: Mifiel-00000000000000020
+                          remind_every: 0
+                          expires_at: null
+                          days_to_expire: null
+                          created_by: 1233
+                          state: completed
+                          original_hash: >-
+                            593b66c90b1364d9967e0050d7259872dcf9404a9b612992297d3ccb5760f6af
+                          manual_close: false
+                          encrypted: false
+                          allow_business: true
+                          file_file_name: 1635453902313.52099.pdf
+                          archived: false
+                          krs: false
+                          owner:
+                            id: 1233
+                            email: ejsouto@liberfin.mx
+                            name: Medici & Satoshi SAPI DE CV
+                            is_company: false
+                          creator:
+                            id: 1233
+                            email: ejsouto@liberfin.mx
+                            name: Medici & Satoshi SAPI DE CV
+                          callback_url: >-
+                            https://connector.dynamicore.io/webhooks/00b51d0d9d714ffabf12a626e335a485
+                          sign_callback_url: >-
+                            https://connector.dynamicore.io/webhooks/00b51d0d9d714ffabf12a626e335a485
+                          already_signed:
+                            - id: 1233
+                              email: ejsouto@liberfin.mx
+                              name: Medici & Satoshi SAPI DE CV
+                          has_not_signed: []
+                          permissions: {}
+                          file: >-
+                            /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/file
+                          file_download: >-
+                            /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/file?download=true
+                          file_signed: >-
+                            /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/file_signed
+                          file_signed_download: >-
+                            /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/file_signed?download=true
+                          file_zipped: >-
+                            /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/zip
+                          file_xml: >-
+                            /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/xml
+                          signers:
+                            - id: 33e14ec6-2f3b-42a2-98e5-5a51af2201a3
+                              name: ivan
+                              email: ivan.peralta@dynamicore.io
+                              tax_id: AAA010102AAA
+                              role: signer
+                              field: null
+                              signed: true
+                              widget_id: null
+                              current: false
+                              last_reminded_at: '2022-02-25T23:27:23.675Z'
+                              features:
+                                tax_id_validation: true
+                              customizations:
+                                show_tos: false
+                                show_tutorial: false
+                              sat_auth: false
+                            - id: d2c4f8cf-6678-419e-a6df-3407f1651ed2
+                              name: carter
+                              email: carter.ipb16@gmail.com
+                              tax_id: MAS1906288W3
+                              role: signer
+                              field: null
+                              signed: true
+                              widget_id: null
+                              current: false
+                              last_reminded_at: '2022-02-25T23:27:23.567Z'
+                              features:
+                                tax_id_validation: true
+                              customizations:
+                                show_tos: false
+                                show_tutorial: false
+                              sat_auth: false
+                          viewers:
+                            - id: 434ded55-8cc8-44f2-9d2b-567fdfbe09b8
+                              email: ivan.peralta.b@outlook.com
+                              name: ipb
+                          signatures:
+                            - id: d2c4f8cf-6678-419e-a6df-3407f1651ed2
+                              name: carter
+                              email: carter.ipb16@gmail.com
+                              signed: true
+                              signed_at: '2022-02-25T23:31:19.932Z'
+                              certificate_number: 1AF2
+                              certificate:
+                                subject:
+                                  CN: Medici & Satoshi SAPI DE CV
+                                  name: Medici & Satoshi SAPI DE CV
+                                  O: Medici & Satoshi SAPI DE CV
+                                  C: MX
+                                  emailAddress: oswaldo@medici-satoshi.com
+                                  x500UniqueIdentifier: MAS1906288W3 / LOGO861010GN7
+                                  serialNumber: LOGO861010HDFPRS08
+                                issuer:
+                                  C: MX
+                                  O: Mifiel
+                                  CN: Mifiel Intermediate
+                                  emailAddress: info@mifiel.com
+                              tax_id: MAS1906288W3
+                              signature: >-
+                                b38da91acd4f9cea35ac5485d5ceb91967a20d27ac0cff84c95c80cc26130fa5a4c9a3a9b48871b75cf09280b854cd8100445f3c70669a46b207dd2d15ed6637966532035560b475622e84db459848764c6155bde941f4cbce0e1655e978c11648316db3dc2a6c26e361063a54d89c0c6f324c1453587c2c47957ec0665d46ebbef3a984022d7b0543f559d002c75ab7dfc6820845a4699392053172466343259b38dc0f86204b8832ad97c8721a5fa71589f3e4035f35efcfde1a6ad9aaf1351733eca1f068292f74bb5086048a5cbd693991e44da00021134bc36d9aa84580d338afa86c38aba6ebeb8423782b8acc31c4592b6a7f1d31331a9e042fd74b98
+                              user:
+                                id: 1233
+                                email: ejsouto@liberfin.mx
+                                name: Medici & Satoshi SAPI DE CV
+                            - id: 33e14ec6-2f3b-42a2-98e5-5a51af2201a3
+                              name: ivan
+                              email: ivan.peralta@dynamicore.io
+                              signed: true
+                              signed_at: '2022-02-25T23:28:10.016Z'
+                              certificate_number: 1AF3
+                              certificate:
+                                subject:
+                                  CN: Racks SAPI
+                                  name: Racks SAPI
+                                  O: Racks SAPI
+                                  C: MX
+                                  emailAddress: oswaldo@racks.app
+                                  x500UniqueIdentifier: AAA010102AAA / AAAA010102AAA
+                                  serialNumber: AAAA010101HDFPRS08
+                                issuer:
+                                  C: MX
+                                  O: Mifiel
+                                  CN: Mifiel Intermediate
+                                  emailAddress: info@mifiel.com
+                              tax_id: AAA010102AAA
+                              signature: >-
+                                2b122d9827e7277b41ca888ad39a6c719292ce53b12ef5e51611919d553856782cb64445e428fcf78356ed9c676691c8270bd9ee769d777f3fcf83d603a10391d61f45d1d291de6f9c058cd38e0db0fd6f970673f45109471084e34bc6bb510d0aa51a849ec472fdf320304a208a44352e678c8666eb4dc55c5204e4939b379a544c240acab4aba43bdfb8f8f91826582f80a8c21c999028045835d7b117398d889bcb5afa37a34c7264c0e34565a5b49eda419ee9858e025de20334c5ad0b8056dad549645fe100af7ab6d9693d542cbb59812052ecdf07621d74aa21e5e35776fb63e249c4732b7140b6905866a298b507b44dd9cd1279c4b4ef4cb83d4513
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 1
+                  data:
+                    - id: a6ace6d3-4b9e-4c43-adff-451fd3bd12c1
+                      send_mail: true
+                      signed_hash: null
+                      name: null
+                      signed_by_all: true
+                      signed: true
+                      signed_at: '2022-02-25T23:31:19.950Z'
+                      created_at: '2022-02-25T23:27:17.758Z'
+                      burned_at: null
+                      status:
+                        - 1
+                        - SIGNED
+                      external_id: Mifiel-00000000000000020
+                      remind_every: 0
+                      expires_at: null
+                      days_to_expire: null
+                      created_by: 1233
+                      state: completed
+                      original_hash: >-
+                        593b66c90b1364d9967e0050d7259872dcf9404a9b612992297d3ccb5760f6af
+                      manual_close: false
+                      encrypted: false
+                      allow_business: true
+                      file_file_name: 1635453902313.52099.pdf
+                      archived: false
+                      krs: false
+                      owner:
+                        id: 1233
+                        email: ejsouto@liberfin.mx
+                        name: Medici & Satoshi SAPI DE CV
+                        is_company: false
+                      creator:
+                        id: 1233
+                        email: ejsouto@liberfin.mx
+                        name: Medici & Satoshi SAPI DE CV
+                      callback_url: >-
+                        https://connector.dynamicore.io/webhooks/00b51d0d9d714ffabf12a626e335a485
+                      sign_callback_url: >-
+                        https://connector.dynamicore.io/webhooks/00b51d0d9d714ffabf12a626e335a485
+                      already_signed:
+                        - id: 1233
+                          email: ejsouto@liberfin.mx
+                          name: Medici & Satoshi SAPI DE CV
+                      has_not_signed: []
+                      permissions: {}
+                      file: >-
+                        /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/file
+                      file_download: >-
+                        /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/file?download=true
+                      file_signed: >-
+                        /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/file_signed
+                      file_signed_download: >-
+                        /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/file_signed?download=true
+                      file_zipped: >-
+                        /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/zip
+                      file_xml: >-
+                        /api/v1/documents/a6ace6d3-4b9e-4c43-adff-451fd3bd12c1/xml
+                      signers:
+                        - id: 33e14ec6-2f3b-42a2-98e5-5a51af2201a3
+                          name: ivan
+                          email: ivan.peralta@dynamicore.io
+                          tax_id: AAA010102AAA
+                          role: signer
+                          field: null
+                          signed: true
+                          widget_id: null
+                          current: false
+                          last_reminded_at: '2022-02-25T23:27:23.675Z'
+                          features:
+                            tax_id_validation: true
+                          customizations:
+                            show_tos: false
+                            show_tutorial: false
+                          sat_auth: false
+                        - id: d2c4f8cf-6678-419e-a6df-3407f1651ed2
+                          name: carter
+                          email: carter.ipb16@gmail.com
+                          tax_id: MAS1906288W3
+                          role: signer
+                          field: null
+                          signed: true
+                          widget_id: null
+                          current: false
+                          last_reminded_at: '2022-02-25T23:27:23.567Z'
+                          features:
+                            tax_id_validation: true
+                          customizations:
+                            show_tos: false
+                            show_tutorial: false
+                          sat_auth: false
+                      viewers:
+                        - id: 434ded55-8cc8-44f2-9d2b-567fdfbe09b8
+                          email: ivan.peralta.b@outlook.com
+                          name: ipb
+                      signatures:
+                        - id: d2c4f8cf-6678-419e-a6df-3407f1651ed2
+                          name: carter
+                          email: carter.ipb16@gmail.com
+                          signed: true
+                          signed_at: '2022-02-25T23:31:19.932Z'
+                          certificate_number: 1AF2
+                          certificate:
+                            subject:
+                              CN: Medici & Satoshi SAPI DE CV
+                              name: Medici & Satoshi SAPI DE CV
+                              O: Medici & Satoshi SAPI DE CV
+                              C: MX
+                              emailAddress: oswaldo@medici-satoshi.com
+                              x500UniqueIdentifier: MAS1906288W3 / LOGO861010GN7
+                              serialNumber: LOGO861010HDFPRS08
+                            issuer:
+                              C: MX
+                              O: Mifiel
+                              CN: Mifiel Intermediate
+                              emailAddress: info@mifiel.com
+                          tax_id: MAS1906288W3
+                          signature: >-
+                            b38da91acd4f9cea35ac5485d5ceb91967a20d27ac0cff84c95c80cc26130fa5a4c9a3a9b48871b75cf09280b854cd8100445f3c70669a46b207dd2d15ed6637966532035560b475622e84db459848764c6155bde941f4cbce0e1655e978c11648316db3dc2a6c26e361063a54d89c0c6f324c1453587c2c47957ec0665d46ebbef3a984022d7b0543f559d002c75ab7dfc6820845a4699392053172466343259b38dc0f86204b8832ad97c8721a5fa71589f3e4035f35efcfde1a6ad9aaf1351733eca1f068292f74bb5086048a5cbd693991e44da00021134bc36d9aa84580d338afa86c38aba6ebeb8423782b8acc31c4592b6a7f1d31331a9e042fd74b98
+                          user:
+                            id: 1233
+                            email: ejsouto@liberfin.mx
+                            name: Medici & Satoshi SAPI DE CV
+                        - id: 33e14ec6-2f3b-42a2-98e5-5a51af2201a3
+                          name: ivan
+                          email: ivan.peralta@dynamicore.io
+                          signed: true
+                          signed_at: '2022-02-25T23:28:10.016Z'
+                          certificate_number: 1AF3
+                          certificate:
+                            subject:
+                              CN: Racks SAPI
+                              name: Racks SAPI
+                              O: Racks SAPI
+                              C: MX
+                              emailAddress: oswaldo@racks.app
+                              x500UniqueIdentifier: AAA010102AAA / AAAA010102AAA
+                              serialNumber: AAAA010101HDFPRS08
+                            issuer:
+                              C: MX
+                              O: Mifiel
+                              CN: Mifiel Intermediate
+                              emailAddress: info@mifiel.com
+                          tax_id: AAA010102AAA
+                          signature: >-
+                            2b122d9827e7277b41ca888ad39a6c719292ce53b12ef5e51611919d553856782cb64445e428fcf78356ed9c676691c8270bd9ee769d777f3fcf83d603a10391d61f45d1d291de6f9c058cd38e0db0fd6f970673f45109471084e34bc6bb510d0aa51a849ec472fdf320304a208a44352e678c8666eb4dc55c5204e4939b379a544c240acab4aba43bdfb8f8f91826582f80a8c21c999028045835d7b117398d889bcb5afa37a34c7264c0e34565a5b49eda419ee9858e025de20334c5ad0b8056dad549645fe100af7ab6d9693d542cbb59812052ecdf07621d74aa21e5e35776fb63e249c4732b7140b6905866a298b507b44dd9cd1279c4b4ef4cb83d4513
+        description: Echo payload
+        required: true
+  /create_order:
+    post:
+      tags:
+        - Conekta
+      summary: Create Orders
+      description: >-
+        This endpoint is used to create order.
+
+        ### HTTP Request
+
+
+        POST
+        [https://api.dynamicore.io/marketplace/apps/conekta/order/new_order]
+
+
+        ### Query Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | account | Y | Integer | Account | 1 |
+
+        | operation | O | Integer | operation | 184 |
+
+        | customer_info | Y | Object | Object with customer information.
+        Telephone and email is optional | {"name": "Demo", "phone":"",
+        "email":""} |
+
+        | items | Y | Object | Object with item information. The price per unit
+        expressed in cents. | { "name": "Box of Cohiba S1s", "unit_price": 1000,
+        "quantity": 1 } |
+
+        | payment_method | O | Object | Object with payment method information |
+        { "type": "oxxo_cash" } |
+
+        | config | O | Object | config | 0 |
+      operationId: create_order
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 1
+                      data:
+                        - id: ord_2rQPaj3neXQQmH7fp
+                          channel: oxxo_cash
+                          amount: 1000
+                          operation: 184
+                          account: 326
+                          company: 2941
+                          active: '0'
+                          config: {}
+                          charge:
+                            service_name: OxxoPay
+                            barcode_url: >-
+                              https://s3.amazonaws.com/cash_payment_barcodes/sandbox_reference.png
+                            object: cash_payment
+                            type: oxxo
+                            expires_at: 1649289600
+                            store_name: OXXO
+                            reference: '98000012463900'
+                            unit_price: 10
+                            currency: MXN
+                            quantity: 1
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 1
+                  data:
+                    - id: ord_2rQPaj3neXQQmH7fp
+                      channel: oxxo_cash
+                      amount: 1000
+                      operation: 184
+                      account: 326
+                      company: 2941
+                      active: '0'
+                      config: {}
+                      charge:
+                        service_name: OxxoPay
+                        barcode_url: >-
+                          https://s3.amazonaws.com/cash_payment_barcodes/sandbox_reference.png
+                        object: cash_payment
+                        type: oxxo
+                        expires_at: 1649289600
+                        store_name: OXXO
+                        reference: '98000012463900'
+                        unit_price: 10
+                        currency: MXN
+                        quantity: 1
+        description: Echo payload
+        required: true
+  /get_order:
+    get:
+      tags:
+        - Conekta
+      summary: Get Order
+      description: >
+        This endpoint is used to get Order data.
+
+        ### HTTP Request
+
+
+        GET
+        [https://api.dynamicore.io/marketplace/apps/conekta/order/get_order/:id]
+      operationId: get_order
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 1
+                      data:
+                        - livemode: false
+                          amount: 900
+                          currency: MXN
+                          payment_status: paid
+                          amount_refunded: 0
+                          customer_info:
+                            email: correo@dominio.com
+                            phone: 55-5555-5555
+                            name: other prueba
+                            object: customer_info
+                          object: order
+                          id: ord_2rLDf1e77o2mKHjY3
+                          metadata: {}
+                          created_at: 1645230551
+                          updated_at: 1645230582
+                          line_items:
+                            object: list
+                            has_more: false
+                            total: 1
+                            data:
+                              - name: Box of Cohiba S1s
+                                unit_price: 900
+                                quantity: 1
+                                object: line_item
+                                id: line_item_2rLDf1e77o2mKHjY1
+                                parent_id: ord_2rLDf1e77o2mKHjY3
+                                metadata: {}
+                                antifraud_info: {}
+                          charges:
+                            object: list
+                            has_more: false
+                            total: 1
+                            data:
+                              - id: 621039d741de2719c7477354
+                                livemode: false
+                                created_at: 1645230551
+                                currency: MXN
+                                payment_method:
+                                  service_name: OxxoPay
+                                  barcode_url: >-
+                                    https://s3.amazonaws.com/cash_payment_barcodes/sandbox_reference.png
+                                  object: cash_payment
+                                  type: oxxo
+                                  expires_at: 1647648000
+                                  store_name: OXXO
+                                  reference: '98000012409960'
+                                object: charge
+                                description: Payment from order
+                                status: paid
+                                amount: 900
+                                paid_at: 1645230582
+                                fee: 41
+                                customer_id: ''
+                                order_id: ord_2rLDf1e77o2mKHjY3
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 1
+                  data:
+                    - livemode: false
+                      amount: 900
+                      currency: MXN
+                      payment_status: paid
+                      amount_refunded: 0
+                      customer_info:
+                        email: correo@dominio.com
+                        phone: 55-5555-5555
+                        name: other prueba
+                        object: customer_info
+                      object: order
+                      id: ord_2rLDf1e77o2mKHjY3
+                      metadata: {}
+                      created_at: 1645230551
+                      updated_at: 1645230582
+                      line_items:
+                        object: list
+                        has_more: false
+                        total: 1
+                        data:
+                          - name: Box of Cohiba S1s
+                            unit_price: 900
+                            quantity: 1
+                            object: line_item
+                            id: line_item_2rLDf1e77o2mKHjY1
+                            parent_id: ord_2rLDf1e77o2mKHjY3
+                            metadata: {}
+                            antifraud_info: {}
+                      charges:
+                        object: list
+                        has_more: false
+                        total: 1
+                        data:
+                          - id: 621039d741de2719c7477354
+                            livemode: false
+                            created_at: 1645230551
+                            currency: MXN
+                            payment_method:
+                              service_name: OxxoPay
+                              barcode_url: >-
+                                https://s3.amazonaws.com/cash_payment_barcodes/sandbox_reference.png
+                              object: cash_payment
+                              type: oxxo
+                              expires_at: 1647648000
+                              store_name: OXXO
+                              reference: '98000012409960'
+                            object: charge
+                            description: Payment from order
+                            status: paid
+                            amount: 900
+                            paid_at: 1645230582
+                            fee: 41
+                            customer_id: ''
+                            order_id: ord_2rLDf1e77o2mKHjY3
+        description: Echo payload
+        required: true
+  /get_reference_pending:
+    get:
+      tags:
+        - Conekta
+      summary: Get Reference Pending
+      description: >-
+        This endpoint is used to get pending reference data.
+
+        ### HTTP Request
+
+
+        GET
+        [https://api.dynamicore.io/marketplace/apps/conekta/order/get_order_pending/:account]
+      operationId: get_reference
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 1
+                      data:
+                        - id: ord_2rQPaj3neXQQmH7fp
+                          channel: oxxo_cash
+                          amount: 1000
+                          operation: 184
+                          account: 326
+                          company: 2941
+                          active: '0'
+                          config: {}
+                          charge:
+                            service_name: OxxoPay
+                            barcode_url: >-
+                              https://s3.amazonaws.com/cash_payment_barcodes/sandbox_reference.png
+                            object: cash_payment
+                            type: oxxo
+                            expires_at: 1649289600
+                            store_name: OXXO
+                            reference: '98000012463900'
+                            unit_price: 10
+                            currency: MXN
+                            quantity: 1
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 1
+                  data:
+                    - id: ord_2rQPaj3neXQQmH7fp
+                      channel: oxxo_cash
+                      amount: 1000
+                      operation: 184
+                      account: 326
+                      company: 2941
+                      active: '0'
+                      config: {}
+                      charge:
+                        service_name: OxxoPay
+                        barcode_url: >-
+                          https://s3.amazonaws.com/cash_payment_barcodes/sandbox_reference.png
+                        object: cash_payment
+                        type: oxxo
+                        expires_at: 1649289600
+                        store_name: OXXO
+                        reference: '98000012463900'
+                        unit_price: 10
+                        currency: MXN
+                        quantity: 1
+        description: Echo payload
+        required: true
+  /get_campaign:
+    get:
+      tags:
+        - Campaigns
+      summary: Get Campaigns
+      description: |-
+        This endpoint is used to get campaigns.
+
+        HTTP Request
+        GET [https://api.dynamicore.io/private/campaign]
+      x-internal: true
+      operationId: get_campaigns
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 5
+                      data:
+                        - id: 123
+                          name: Notificación de pago - 3 dias antes de pago
+                          type: 2
+                          company: 3027
+                          description: 3 dias antes de pago
+                          enabled: '1'
+                          product: '87'
+                          tag: null
+                          node: 500
+                          position: null
+                          loop: null
+                          loop_node: 503
+                          trigger:
+                            link: 1
+                            config:
+                              id: 78
+                              cron: 0 15 * * *
+                          actions:
+                            - link: 34
+                              config:
+                                id: '76'
+                                node: 504
+                          flow: 185
+                        - id: 125
+                          name: Recordatorio - 1 a 5 dias de Mora
+                          type: 2
+                          company: 3027
+                          description: Recordatorio - 1 a 5 dias de Mora
+                          enabled: '1'
+                          product: '87'
+                          tag: null
+                          node: 510
+                          position: null
+                          loop: null
+                          loop_node: 513
+                          trigger:
+                            link: 1
+                            config:
+                              id: 80
+                              cron: 0 15 * * *
+                          actions:
+                            - link: 34
+                              config:
+                                id: '78'
+                                node: 514
+                          flow: 187
+                        - id: 150
+                          name: Recordatorio - 6 a 15 dias de Mora
+                          type: 2
+                          company: 3027
+                          description: Recordatorio - 6 a 15 dias de Mora
+                          enabled: '1'
+                          product: '87'
+                          tag: null
+                          node: 595
+                          position: null
+                          loop: null
+                          loop_node: 598
+                          trigger:
+                            link: 1
+                            config:
+                              id: 107
+                              cron: 0 1,19 * * *
+                          actions:
+                            - link: 34
+                              config:
+                                id: '106'
+                                node: 599
+                          flow: 202
+                        - id: 124
+                          name: Día de Pago
+                          type: 2
+                          company: 3027
+                          description: Recordatorio día de pago
+                          enabled: '1'
+                          product: '87'
+                          tag: null
+                          node: 505
+                          position: null
+                          loop: null
+                          loop_node: 508
+                          trigger:
+                            link: 1
+                            config:
+                              id: 79
+                              cron: 0 14 * * *
+                          actions:
+                            - link: 34
+                              config:
+                                id: '77'
+                                node: 509
+                          flow: 186
+                        - id: 149
+                          name: Notificación de pago - 1 día antes del pago
+                          type: 2
+                          company: 3027
+                          description: Notificación de pago - 1 día antes del pago
+                          enabled: '1'
+                          product: '87'
+                          tag: null
+                          node: 561
+                          position: null
+                          loop: null
+                          loop_node: 564
+                          trigger:
+                            link: 1
+                            config:
+                              id: 105
+                              cron: 0 15 * * *
+                          actions:
+                            - link: 34
+                              config:
+                                id: '105'
+                                node: 565
+                          flow: 197
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 5
+                  data:
+                    - id: 123
+                      name: Notificación de pago - 3 dias antes de pago
+                      type: 2
+                      company: 3027
+                      description: 3 dias antes de pago
+                      enabled: '1'
+                      product: '87'
+                      tag: null
+                      node: 500
+                      position: null
+                      loop: null
+                      loop_node: 503
+                      trigger:
+                        link: 1
+                        config:
+                          id: 78
+                          cron: 0 15 * * *
+                      actions:
+                        - link: 34
+                          config:
+                            id: '76'
+                            node: 504
+                      flow: 185
+                    - id: 125
+                      name: Recordatorio - 1 a 5 dias de Mora
+                      type: 2
+                      company: 3027
+                      description: Recordatorio - 1 a 5 dias de Mora
+                      enabled: '1'
+                      product: '87'
+                      tag: null
+                      node: 510
+                      position: null
+                      loop: null
+                      loop_node: 513
+                      trigger:
+                        link: 1
+                        config:
+                          id: 80
+                          cron: 0 15 * * *
+                      actions:
+                        - link: 34
+                          config:
+                            id: '78'
+                            node: 514
+                      flow: 187
+                    - id: 150
+                      name: Recordatorio - 6 a 15 dias de Mora
+                      type: 2
+                      company: 3027
+                      description: Recordatorio - 6 a 15 dias de Mora
+                      enabled: '1'
+                      product: '87'
+                      tag: null
+                      node: 595
+                      position: null
+                      loop: null
+                      loop_node: 598
+                      trigger:
+                        link: 1
+                        config:
+                          id: 107
+                          cron: 0 1,19 * * *
+                      actions:
+                        - link: 34
+                          config:
+                            id: '106'
+                            node: 599
+                      flow: 202
+                    - id: 124
+                      name: Día de Pago
+                      type: 2
+                      company: 3027
+                      description: Recordatorio día de pago
+                      enabled: '1'
+                      product: '87'
+                      tag: null
+                      node: 505
+                      position: null
+                      loop: null
+                      loop_node: 508
+                      trigger:
+                        link: 1
+                        config:
+                          id: 79
+                          cron: 0 14 * * *
+                      actions:
+                        - link: 34
+                          config:
+                            id: '77'
+                            node: 509
+                      flow: 186
+                    - id: 149
+                      name: Notificación de pago - 1 día antes del pago
+                      type: 2
+                      company: 3027
+                      description: Notificación de pago - 1 día antes del pago
+                      enabled: '1'
+                      product: '87'
+                      tag: null
+                      node: 561
+                      position: null
+                      loop: null
+                      loop_node: 564
+                      trigger:
+                        link: 1
+                        config:
+                          id: 105
+                          cron: 0 15 * * *
+                      actions:
+                        - link: 34
+                          config:
+                            id: '105'
+                            node: 565
+                      flow: 197
+        required: true
+  /eval_campaign:
+    get:
+      tags:
+        - Campaigns
+      summary: Eval Campaign
+      description: |-
+        This endpoint is used to get eval campaigns.
+
+        HTTP Request
+        GET [https://api.dynamicore.io/private/campaign]
+      x-internal: true
+      operationId: eval_campaign
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 5
+                      data:
+                        - id: 123
+                          name: Notificación de pago - 3 dias antes de pago
+                          type: 2
+                          company: 3027
+                          description: 3 dias antes de pago
+                          enabled: '1'
+                          product: '87'
+                          tag: null
+                          node: 500
+                          position: null
+                          loop: null
+                          loop_node: 503
+                          trigger:
+                            link: 1
+                            config:
+                              id: 78
+                              cron: 0 15 * * *
+                          actions:
+                            - link: 34
+                              config:
+                                id: '76'
+                                node: 504
+                          flow: 185
+                        - id: 125
+                          name: Recordatorio - 1 a 5 dias de Mora
+                          type: 2
+                          company: 3027
+                          description: Recordatorio - 1 a 5 dias de Mora
+                          enabled: '1'
+                          product: '87'
+                          tag: null
+                          node: 510
+                          position: null
+                          loop: null
+                          loop_node: 513
+                          trigger:
+                            link: 1
+                            config:
+                              id: 80
+                              cron: 0 15 * * *
+                          actions:
+                            - link: 34
+                              config:
+                                id: '78'
+                                node: 514
+                          flow: 187
+                        - id: 150
+                          name: Recordatorio - 6 a 15 dias de Mora
+                          type: 2
+                          company: 3027
+                          description: Recordatorio - 6 a 15 dias de Mora
+                          enabled: '1'
+                          product: '87'
+                          tag: null
+                          node: 595
+                          position: null
+                          loop: null
+                          loop_node: 598
+                          trigger:
+                            link: 1
+                            config:
+                              id: 107
+                              cron: 0 1,19 * * *
+                          actions:
+                            - link: 34
+                              config:
+                                id: '106'
+                                node: 599
+                          flow: 202
+                        - id: 124
+                          name: Día de Pago
+                          type: 2
+                          company: 3027
+                          description: Recordatorio día de pago
+                          enabled: '1'
+                          product: '87'
+                          tag: null
+                          node: 505
+                          position: null
+                          loop: null
+                          loop_node: 508
+                          trigger:
+                            link: 1
+                            config:
+                              id: 79
+                              cron: 0 14 * * *
+                          actions:
+                            - link: 34
+                              config:
+                                id: '77'
+                                node: 509
+                          flow: 186
+                        - id: 149
+                          name: Notificación de pago - 1 día antes del pago
+                          type: 2
+                          company: 3027
+                          description: Notificación de pago - 1 día antes del pago
+                          enabled: '1'
+                          product: '87'
+                          tag: null
+                          node: 561
+                          position: null
+                          loop: null
+                          loop_node: 564
+                          trigger:
+                            link: 1
+                            config:
+                              id: 105
+                              cron: 0 15 * * *
+                          actions:
+                            - link: 34
+                              config:
+                                id: '105'
+                                node: 565
+                          flow: 197
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 5
+                  data:
+                    - id: 123
+                      name: Notificación de pago - 3 dias antes de pago
+                      type: 2
+                      company: 3027
+                      description: 3 dias antes de pago
+                      enabled: '1'
+                      product: '87'
+                      tag: null
+                      node: 500
+                      position: null
+                      loop: null
+                      loop_node: 503
+                      trigger:
+                        link: 1
+                        config:
+                          id: 78
+                          cron: 0 15 * * *
+                      actions:
+                        - link: 34
+                          config:
+                            id: '76'
+                            node: 504
+                      flow: 185
+                    - id: 125
+                      name: Recordatorio - 1 a 5 dias de Mora
+                      type: 2
+                      company: 3027
+                      description: Recordatorio - 1 a 5 dias de Mora
+                      enabled: '1'
+                      product: '87'
+                      tag: null
+                      node: 510
+                      position: null
+                      loop: null
+                      loop_node: 513
+                      trigger:
+                        link: 1
+                        config:
+                          id: 80
+                          cron: 0 15 * * *
+                      actions:
+                        - link: 34
+                          config:
+                            id: '78'
+                            node: 514
+                      flow: 187
+                    - id: 150
+                      name: Recordatorio - 6 a 15 dias de Mora
+                      type: 2
+                      company: 3027
+                      description: Recordatorio - 6 a 15 dias de Mora
+                      enabled: '1'
+                      product: '87'
+                      tag: null
+                      node: 595
+                      position: null
+                      loop: null
+                      loop_node: 598
+                      trigger:
+                        link: 1
+                        config:
+                          id: 107
+                          cron: 0 1,19 * * *
+                      actions:
+                        - link: 34
+                          config:
+                            id: '106'
+                            node: 599
+                      flow: 202
+                    - id: 124
+                      name: Día de Pago
+                      type: 2
+                      company: 3027
+                      description: Recordatorio día de pago
+                      enabled: '1'
+                      product: '87'
+                      tag: null
+                      node: 505
+                      position: null
+                      loop: null
+                      loop_node: 508
+                      trigger:
+                        link: 1
+                        config:
+                          id: 79
+                          cron: 0 14 * * *
+                      actions:
+                        - link: 34
+                          config:
+                            id: '77'
+                            node: 509
+                      flow: 186
+                    - id: 149
+                      name: Notificación de pago - 1 día antes del pago
+                      type: 2
+                      company: 3027
+                      description: Notificación de pago - 1 día antes del pago
+                      enabled: '1'
+                      product: '87'
+                      tag: null
+                      node: 561
+                      position: null
+                      loop: null
+                      loop_node: 564
+                      trigger:
+                        link: 1
+                        config:
+                          id: 105
+                          cron: 0 15 * * *
+                      actions:
+                        - link: 34
+                          config:
+                            id: '105'
+                            node: 565
+                      flow: 197
+        required: true
+  /get_campaigns_tytes:
+    get:
+      tags:
+        - Campaigns
+      summary: Get Campaigns Types
+      description: |-
+        This endpoint is used to get types of campaigns.
+
+        HTTP Request
+        GET [https://api.dynamicore.io/private/campaign/types]
+      x-internal: true
+      operationId: get_campaigns_types
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 2
+                      data:
+                        - id: 2
+                          name: Grupos
+                          weight: 0
+                        - id: 1
+                          name: Cuantificables
+                          weight: 1
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 2
+                  data:
+                    - id: 2
+                      name: Grupos
+                      weight: 0
+                    - id: 1
+                      name: Cuantificables
+                      weight: 1
+        required: true
+  /create_campaign:
+    post:
+      tags:
+        - Campaigns
+      summary: Create Campaign
+      description: >-
+        This endpoint is used to create campaigns.
+
+
+        HTTP Request
+
+        POST [https://api.dynamicore.io//private/campaign]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | id | Y | Number | Id of campaign | 175 |
+
+        | name | Y | String | Name of campaign | Notificación de pago - 3 dias
+        antes de pago |
+
+        | type | Y | Number | Type of campaign | 2 |
+
+        | company | Y | Number | Number of campaign | 3027 |
+
+        | enabled | Y | String | Status of campaign | 2 |
+
+        | description| Y | String | Description of campaign | 3 dias antes de
+        pago |
+      x-internal: true
+      operationId: create_campaigns
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    id: '175'
+                    name: Notificación de pago - 3 dias antes de pago
+                    type: '2'
+                    company: '3027'
+                    enabled: '1'
+                    description: 3 dias antes de pago
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                id: '175'
+                name: Notificación de pago - 3 dias antes de pago
+                type: '2'
+                company: '3027'
+                enabled: '1'
+                description: 3 dias antes de pago
+        required: true
+  /update_campaign:
+    put:
+      tags:
+        - Campaigns
+      summary: Update Campaign
+      description: >-
+        This endpoint is used to update a campaign.
+
+
+        HTTP Request
+
+        PUT [https://api.dynamicore.io//private/campaign]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | id | Y | Number | Id of campaign | 175 |
+
+        | name | Y | String | Name of campaign | Notificación de pago - 3 dias
+        antes de pago |
+
+        | type | Y | Number | Type of campaign | 2 |
+
+        | company | Y | Number | Number of campaign | 3027 |
+
+        | enabled | Y | String | Status of campaign | 2 |
+
+        | description| Y | String | Description of campaign | 3 dias antes de
+        pago |
+      x-internal: true
+      operationId: update_campaigns
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    id: '175'
+                    name: Notificación de pago - 3 dias antes de pago
+                    type: '2'
+                    company: '3027'
+                    enabled: '1'
+                    description: 3 dias antes de pago
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                id: '175'
+                name: Notificación de pago - 3 dias antes de pago
+                type: '2'
+                company: '3027'
+                enabled: '1'
+                description: 3 dias antes de pago
+        required: true
+  /delete_campaign:
+    delete:
+      tags:
+        - Campaigns
+      summary: Delete Campaign
+      description: |-
+        This endpoint is used to delete campaign.
+        ### HTTP Request
+
+        DELETE [https://api.dynamicore.io/private/campaign?id=1]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | Y | Number | ID Clients | 1 |
+      x-internal: true
+      operationId: delete_campaigns
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get_users:
+    get:
+      tags:
+        - Users
+      summary: Get Users
+      description: |-
+        This endpoint is used to get users.
+
+        HTTP Request
+        GET [https://api.dynamicore.io/private/users]
+      x-internal: true
+      operationId: get_users
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      data:
+                        - id: 1200
+                          role: 1070
+                          group: Grupo 1
+                          username: '+5244444400'
+                          created_at: '2022-05-10T16:40:56'
+                          description: Web Client
+                          external_id: 56fd88d5-530e-414a-9933-cc7c28e06a3c
+                          last_access: '2022-05-10T16:53:01'
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  data:
+                    - id: 1200
+                      role: 1070
+                      group: Grupo 1
+                      username: '+5244444400'
+                      created_at: '2022-05-10T16:40:56'
+                      description: Web Client
+                      external_id: 56fd88d5-530e-414a-9933-cc7c28e06a3c
+                      last_access: '2022-05-10T16:53:01'
+        required: true
+  /new_user:
+    post:
+      tags:
+        - Users
+      summary: New User
+      description: |-
+        This endpoint is used to create users.
+        ### HTTP Request
+
+        POST [https://api.dynamicore.io/users/create]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | email | Y | String | Email of user | example1@gmail.com |
+        | password | Y | String | Password of user | Password123 |
+      x-internal: true
+      operationId: new_user
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get_binnacle:
+    get:
+      tags:
+        - Users
+      summary: Get Binnacle
+      description: |-
+        This endpoint is used to get binnacle.
+
+        HTTP Request
+        GET [https://api.dynamicore.io/private/users/binnacle]
+      x-internal: true
+      operationId: get_binnacle
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /create_owner:
+    post:
+      tags:
+        - Users
+      summary: Create Owner
+      description: |-
+        This endpoint is used to create owner.
+        ### HTTP Request
+
+        POST [https://api.dynamicore.io/users/owner]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | email | Y | String | Email of user | example1@gmail.com |
+      x-internal: true
+      operationId: create_owner
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /user_client:
+    post:
+      tags:
+        - Users
+      summary: Role User Client
+      description: >-
+        This endpoint is used to create role users client.
+
+        ### HTTP Request
+
+
+        POST [https://api.dynamicore.io/users/add]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | email | Y | String | Email of user | example1@gmail.com |
+
+        | role | Y | Object | Role of user | {"Version": 1, "Statement":
+        [{"Action": ["*:*"], "Effect": "Allow", "Resource": "dcore:*:*:*"}]} |
+      x-internal: true
+      operationId: user_client
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get_contrab:
+    get:
+      tags:
+        - Company
+      summary: Get Contrab
+      description: |-
+        This endpoint is used to get Contrab.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/private/crontab]
+      x-internal: true
+      operationId: get_contrab
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 1
+                      data:
+                        - id: 27
+                          company: 2251
+                          cron: 10 11 * * *
+                          node: 216
+                          user_role: 007fcdd6-e03b-4e6d-7725-3ac9ed4a15cd
+                          command: >-
+                            /usr/bin/python3 /usr/src/app/start.py >>
+                            /usr/src/app/myjob.log 2>&1
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 1
+                  data:
+                    - id: 27
+                      company: 2251
+                      cron: 10 11 * * *
+                      node: 216
+                      user_role: 007fcdd6-e03b-4e6d-7725-3ac9ed4a15cd
+                      command: >-
+                        /usr/bin/python3 /usr/src/app/start.py >>
+                        /usr/src/app/myjob.log 2>&1
+        required: true
+  /create_contrab:
+    get:
+      tags:
+        - Company
+      summary: Create Contrab
+      description: >-
+        This endpoint is used to create Contrab.
+
+        ### HTTP Request
+
+
+        POST [https://api.dynamicore.io/private/crontab]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | company | Y | Number | Id of company | 17 |
+
+        | cron | Y | String | Type | */1 * * * * |
+
+        | command | Y | String | Comdand | python3 /usr/src/app/start.py >>
+        /usr/src/app/myjob.log 2>&1 |
+
+        | user_role | Y | String | Id Role of User | ssdf234 |
+
+        | node | Y | Number | Node | 12 |
+      x-internal: true
+      operationId: create_contrab
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /update_contrab:
+    put:
+      tags:
+        - Company
+      summary: Update Contrab
+      description: >-
+        This endpoint is used to update Contrab.
+
+        ### HTTP Request
+
+
+        PUT [https://api.dynamicore.io/private/crontab]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | company | Y | Number | Id of company | 17 |
+
+        | cron | Y | String | Type | */1 * * * * |
+
+        | command | Y | String | Comdand | python3 /usr/src/app/start.py >>
+        /usr/src/app/myjob.log 2>&1 |
+
+        | user_role | Y | String | Id Role of User | ssdf234 |
+
+        | node | Y | Number | Node | 12 |
+      x-internal: true
+      operationId: update_contrab
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /update_company:
+    put:
+      tags:
+        - Company
+      summary: Update Company
+      description: >-
+        This endpoint is used to create Company.
+
+        ### HTTP Request
+
+
+        PUT [https://api.dynamicore.io/private/company]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | id | Y | Number | Id of company | 17 |
+
+        | name | Y | String | Name of Company | My Company |
+
+        | time_zone | Y | Time | Time | 10:00:00 |
+
+        | date_format | Y | Date | Date | 2022-09-09 |
+
+        | street_address | Y | String | Adrees of Company | 45 Avenue |
+
+        | city | Y | String | City of company | Orlando |
+
+        | zipcode | Y | Number | Zip Code of Company | 03100 |
+
+        | state | Y | String | State of Company | Florida |
+
+        | contry | Y | String | Country of Company | United States |
+
+        | email | Y | Email | Email of contact | example@gmail.com |
+
+        | logo | Y | url | Url | python3 /usr/src/app/start.py >>
+        /usr/src/app/myjob.log 2>&1 |
+
+        | icon | Y | url | Url |  |
+
+        | tax_id | Y | Number | Id | 12 |
+      x-internal: true
+      operationId: update_company
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get_products:
+    get:
+      tags:
+        - Products
+      summary: Get Products
+      description: |-
+        This endpoint is used to get products.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/private/products]
+      x-internal: true
+      operationId: get_products
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 1
+                      data:
+                        - id: 87
+                          name: Name axample
+                          company: 3027
+                          description: Cel
+                          product_type: 92
+                          enabled: '1'
+                          group: 2929
+                          created_at: '2021-06-03T20:16:33'
+                          config:
+                            - name: contract
+                              score: 1
+                              value: MCel
+                              disable: false
+                              contract: MCel
+                              displayname: Número del Contrato
+                              displaytype: string
+                          tabs:
+                            headers:
+                              - name: cycle
+                                label: '#'
+                              - name: date
+                                type: date
+                                label: Fecha límite de pago
+                            amortization: 1
+                            headers_ideal:
+                              - name: cycle
+                                label: '#'
+                          type: liabilities
+                          currency: '484'
+                          movements_headers:
+                            - name: reference
+                              type: date
+                              label: Fecha de pago
+                          template:
+                            - name: start_date
+                              type: datetime
+                              field: 67
+                              score: 1
+                              validate: {}
+                              displayname: Día
+                              displaytype: string
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 1
+                  data:
+                    - id: 87
+                      name: Name axample
+                      company: 3027
+                      description: Cel
+                      product_type: 92
+                      enabled: '1'
+                      group: 2929
+                      created_at: '2021-06-03T20:16:33'
+                      config:
+                        - name: contract
+                          score: 1
+                          value: MCel
+                          disable: false
+                          contract: MCel
+                          displayname: Número del Contrato
+                          displaytype: string
+                      tabs:
+                        headers:
+                          - name: cycle
+                            label: '#'
+                          - name: date
+                            type: date
+                            label: Fecha límite de pago
+                        amortization: 1
+                        headers_ideal:
+                          - name: cycle
+                            label: '#'
+                      type: liabilities
+                      currency: '484'
+                      movements_headers:
+                        - name: reference
+                          type: date
+                          label: Fecha de pago
+                      template:
+                        - name: start_date
+                          type: datetime
+                          field: 67
+                          score: 1
+                          validate: {}
+                          displayname: Día
+                          displaytype: string
+        required: true
+  /create_product:
+    post:
+      tags:
+        - Products
+      summary: Create Products
+      description: >-
+        This endpoint is used to create products.
+
+        ### HTTP Request
+
+
+        POST [https://api.dynamicore.io/private/products]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | id | Y | Number | Id of product | 1 |
+
+        | name | Y | String | Name of Product | CC077 |
+
+        | group | Y | Number | Id of group | 17 |
+
+        | company | Y | String | Id of company | 17 |
+
+        | enabled | Y | Boolean | Type of client | true |
+
+        | description | Y | String | Description of product | Example
+        Description |
+
+        | product_type | Y | String | Product type | 43 |
+      x-internal: true
+      operationId: create_products
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /update_product:
+    put:
+      tags:
+        - Products
+      summary: Update Products
+      description: >-
+        This endpoint is used to update products.
+
+        ### HTTP Request
+
+
+        PUT [https://api.dynamicore.io/private/products]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | id | Y | Number | Id of product | 1 |
+
+        | name | Y | String | Name of Product | CC077 |
+
+        | group | Y | Number | Id of group | 17 |
+
+        | company | Y | String | Id of company | 17 |
+
+        | enabled | Y | Boolean | Type of client | true |
+
+        | description | Y | String | Description of product | Example
+        Description |
+
+        | product_type | Y | String | Product type | 43 |
+      x-internal: true
+      operationId: update_products
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /products_types:
+    get:
+      tags:
+        - Products
+      summary: Get Products types
+      description: |-
+        This endpoint is used to get products types.
+        ### HTTP Request
+
+        PUT [https://api.dynamicore.io/private/products/types]
+      x-internal: true
+      operationId: get_products_types
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 2
+                      data:
+                        - id: 92
+                          name: Credito
+                          company: 3027
+                          description: 'Ejemplo template #3'
+                          alias: Credito
+                          template:
+                            - name: start_date
+                              type: datetime
+                              field: 67
+                              score: 1
+                              validate: {}
+                              displayname: Día
+                              displaytype: string
+                        - id: 93
+                          name: Credito
+                          company: 3027
+                          description: 'Ejemplo template #3'
+                          alias: MasterCel
+                          template:
+                            - name: start_date
+                              type: datetime
+                              field: 67
+                              score: 1
+                              validate: {}
+                              displayname: Día mensual de pago
+                              displaytype: string
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 2
+                  data:
+                    - id: 92
+                      name: Credito
+                      company: 3027
+                      description: 'Ejemplo template #3'
+                      alias: Credito
+                      template:
+                        - name: start_date
+                          type: datetime
+                          field: 67
+                          score: 1
+                          validate: {}
+                          displayname: Día
+                          displaytype: string
+                    - id: 93
+                      name: Credito
+                      company: 3027
+                      description: 'Ejemplo template #3'
+                      alias: Alias Example
+                      template:
+                        - name: start_date
+                          type: datetime
+                          field: 67
+                          score: 1
+                          validate: {}
+                          displayname: Día mensual de pago
+                          displaytype: string
+        required: true
+  /create_product_type:
+    post:
+      tags:
+        - Products
+      summary: Create Products types
+      description: >-
+        This endpoint is used to create products types.
+
+        ### HTTP Request
+
+
+        POST [https://api.dynamicore.io/private/products/types]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | id | Y | Number | Id of product type | 17 |
+
+        | name | Y | String | Name of product type | Factoraje Ej1 |
+
+        | alias | Y | String | Alias of product type | Factoraje |
+
+        | company | Y | String | Company of product type| 22 |
+
+        | template | Y | Object | Template of product type | [{"field": 36,
+        "score": 1, "validate": {}, "displayname": "Valor Nominal"}, {"field":
+        37, "score": 2, "validate": {}, "displayname": "Garantia"}, {"field":
+        39, "score": 3, "validate": {}, "displayname": "Fecha de Creacion"},
+        {"field": 34, "score": 4, "validate": {}, "displayname": "CLABE"},
+        {"field": 28, "score": 5, "validate": {}, "displayname": "Contrato
+        Firmado"}, {"field": 40, "score": 6, "validate": {}, "displayname":
+        "Honorarios"}, {"field": 41, "score": 7, "validate": {}, "displayname":
+        "Fecha de Vencimiento"}, {"field": 42, "score": 8, "validate": {},
+        "displayname": "Fecha de la Factura"}] |
+
+        | description | Y | String | Description of product type | Description
+        product type |
+      x-internal: true
+      operationId: create_products_types
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /update_product_type:
+    put:
+      tags:
+        - Products
+      summary: Update Products types
+      description: >-
+        This endpoint is used to update products types.
+
+        ### HTTP Request
+
+
+        PUT [https://api.dynamicore.io/private/products/types]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | id | Y | Number | Id of product type | 17 |
+
+        | name | Y | String | Name of product type | Factoraje Ej1 |
+
+        | alias | Y | String | Alias of product type | Factoraje |
+
+        | company | Y | String | Company of product type| 22 |
+
+        | template | Y | Object | Template of product type | [{"field": 36,
+        "score": 1, "validate": {}, "displayname": "Valor Nominal"}, {"field":
+        37, "score": 2, "validate": {}, "displayname": "Garantia"}, {"field":
+        39, "score": 3, "validate": {}, "displayname": "Fecha de Creacion"},
+        {"field": 34, "score": 4, "validate": {}, "displayname": "CLABE"},
+        {"field": 28, "score": 5, "validate": {}, "displayname": "Contrato
+        Firmado"}, {"field": 40, "score": 6, "validate": {}, "displayname":
+        "Honorarios"}, {"field": 41, "score": 7, "validate": {}, "displayname":
+        "Fecha de Vencimiento"}, {"field": 42, "score": 8, "validate": {},
+        "displayname": "Fecha de la Factura"}] |
+
+        | description | Y | String | Description of product type | Description
+        product type |
+      x-internal: true
+      operationId: update_products_types
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get_product_operation:
+    get:
+      tags:
+        - Products
+      summary: Get Products Operations
+      description: >-
+        This endpoint is used to get products operations.
+
+        ### HTTP Request
+
+
+        GET
+        [https://api.dynamicore.io/private/products/typesprivate/products/operations?product=5]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | product | Y | Number | Id of product operation | 5 |
+      x-internal: true
+      operationId: get_products_operatioons
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 2
+                      data:
+                        - id: 5
+                          name: Reverso de Cargo a Tarjeta
+                          operation: 102
+                          product: 5
+                        - id: 4
+                          name: Consulta de Saldo
+                          operation: 103
+                          product: 5
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 2
+                  data:
+                    - id: 5
+                      name: Reverso de Cargo a Tarjeta
+                      operation: 102
+                      product: 5
+                    - id: 4
+                      name: Consulta de Saldo
+                      operation: 103
+                      product: 5
+        required: true
+  /create_product_operation:
+    post:
+      tags:
+        - Products
+      summary: Create Products Operations
+      description: |-
+        This endpoint is used to create products operations.
+        ### HTTP Request
+
+        POST [https://api.dynamicore.io/private/products/operations?product=5]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | company | Y | Number | Id of product operation| 17 |
+        | product | Y | Number | Name of product operation | 44 |
+        | operation | Y | String | Name of product operation | "Movimiento" |
+      x-internal: true
+      operationId: create_products_operation
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /delete_product_operation:
+    delete:
+      tags:
+        - Products
+      summary: Delete Products operations
+      description: |-
+        This endpoint is used to delete product operation.
+        ### HTTP Request
+
+        DELETE [https://api.dynamicore.io/private/products/operations?product=5]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | Y | Number | ID Clients | 1 |
+      x-internal: true
+      operationId: delete_products_operations
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get_flows:
+    get:
+      tags:
+        - Flows
+      summary: Get Flows
+      description: |-
+        This endpoint is used to get flows.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/private/diagrams/flows]
+      x-internal: true
+      operationId: get_flows
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /create_flow:
+    post:
+      tags:
+        - Flows
+      summary: Create Flows
+      description: |-
+        This endpoint is used to create flows.
+        ### HTTP Request
+
+        POST [https://api.dynamicore.io/private/diagrams/flows]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | Y | Number | Id of flow | 1 |
+        | name | Y | String | Name of flow | Flow1 |
+        | company | Y | Number | Id company of flow | 1 |
+        | enabled | Y | boolean | Activate Flow | true |
+        | service | Y | Number | Id of service | 1 |
+        | diagrams | Y | String | Diagram | CC077 |
+      x-internal: true
+      operationId: create_flows
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /update_flow:
+    put:
+      tags:
+        - Flows
+      summary: Update Flows
+      description: |-
+        This endpoint is used to update flows.
+        ### HTTP Request
+
+        PUT [https://api.dynamicore.io/private/diagrams/flows]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | Y | Number | Id of flow | 1 |
+        | name | Y | String | Name of flow | Flow1 |
+        | company | Y | Number | Id company of flow | 1 |
+        | enabled | Y | boolean | Activate Flow | true |
+        | service | Y | Number | Id of service | 1 |
+        | diagrams | Y | String | Diagram | CC077 |
+      x-internal: true
+      operationId: update_flows
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get_flow_types:
+    get:
+      tags:
+        - Flows
+      summary: Get Flow Types
+      description: |-
+        This endpoint is used to get flow types.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/private/diagrams/flows_types]
+      x-internal: true
+      operationId: get_flow_types
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get_node:
+    get:
+      tags:
+        - Nodes
+      summary: Get Nodes
+      description: |-
+        This endpoint is used to get nodes.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/private/diagrams/nodes]
+      x-internal: true
+      operationId: get_nodes
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /create_node:
+    post:
+      tags:
+        - Nodes
+      summary: Create Nodes
+      description: |-
+        This endpoint is used to create nodes.
+        ### HTTP Request
+
+        POST [https://api.dynamicore.io/private/diagrams/nodes]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | Y | Number | Id of flow | 1 |
+        | icon | Y | String | Name of flow | Flow1 |
+        | class | Y | Number | Id company of flow | 1 |
+        | input_map | Y | boolean | Activate Flow | true |
+        | output_map | Y | Number | Id of service | 1 |
+        | company | Y | String | Diagram | CC077 |
+      x-internal: true
+      operationId: create_nodes
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /update_node:
+    put:
+      tags:
+        - Nodes
+      summary: Update Nodes
+      description: |-
+        This endpoint is used to update nodes.
+        ### HTTP Request
+
+        PUT [https://api.dynamicore.io/private/diagrams/nodes]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | Y | Number | Id of flow | 1 |
+        | icon | Y | String | Name of flow | Flow1 |
+        | class | Y | Number | Id company of flow | 1 |
+        | input_map | Y | boolean | Activate Flow | true |
+        | output_map | Y | Number | Id of service | 1 |
+        | company | Y | String | Diagram | CC077 |
+      x-internal: true
+      operationId: update_nodes
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get_class:
+    get:
+      tags:
+        - Class
+      summary: Get Class
+      description: |-
+        This endpoint is used to get class.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/private/diagrams/class]
+      x-internal: true
+      operationId: get_class
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /create_class:
+    post:
+      tags:
+        - Class
+      summary: Create Class
+      description: |-
+        This endpoint is used to create class.
+        ### HTTP Request
+
+        POST [https://api.dynamicore.io/private/diagrams/class]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | Y | Number | Id of flow | 1 |
+        | name | Y | String | Name of flow | Flow1 |
+        | jar | Y | Number | Id company of flow | 1 |
+        | input | Y | boolean | Activate Flow | true |
+        | output | Y | Number | Id of service | 1 |
+        | description | Y | String | Diagram | CC077 |
+      x-internal: true
+      operationId: create_class
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /update_class:
+    put:
+      tags:
+        - Class
+      summary: Update Class
+      description: |-
+        This endpoint is used to update class.
+        ### HTTP Request
+
+        PUT [https://api.dynamicore.io/private/diagrams/class]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | id | Y | Number | Id of flow | 1 |
+        | name | Y | String | Name of flow | Flow1 |
+        | jar | Y | Number | Id company of flow | 1 |
+        | input | Y | boolean | Activate Flow | true |
+        | output | Y | Number | Id of service | 1 |
+        | description | Y | String | Diagram | CC077 |
+      x-internal: true
+      operationId: update_class
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /get_diagrams_logs:
+    get:
+      tags:
+        - Logs
+      summary: Get Diagrams Logs
+      description: |-
+        This endpoint is used to get logs.
+        ### HTTP Request
+
+        GET [https://api.dynamicore.io/?action=/diagrams/logs]
+      x-internal: true
+      operationId: get_logs
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /add_diagrams_logs:
+    post:
+      tags:
+        - Logs
+      summary: Create Diagrams Logs
+      description: |-
+        This endpoint is used to create logs.
+        ### HTTP Request
+
+        POST [https://api.dynamicore.io/?action=/diagrams/logs]
+
+        ### Parameters
+
+        | Parameter | Required | Type | Description | Example |
+        | --------- | --------- | --------- | --------- |--------- |
+        | data | Y | String | Data of Log | 1 |
+        | flow | Y | Number | Id of Flow | 1 |
+        | node | Y | String | Node to add | 1 |
+        | uuid | Y | uuid | Id to Log | 670b9562-b30d-52d5-b827-655787665500 |
+        | extras | Y | Object | Extra config | |
+      x-internal: true
+      operationId: create_logs
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+  /send_mail:
+    post:
+      tags:
+        - Email
+      summary: Send emails
+      description: >-
+        This endpoint is used to sender emails.
+
+        ### HTTP Request
+
+
+        POST [https://api.dynamicore.io/sender/email/template]
+
+
+        ### Parameters
+
+
+        | Parameter | Required | Type | Description | Example |
+
+        | --------- | --------- | --------- | --------- |--------- |
+
+        | name | Y | String | Name  | 22-130102029298373 |
+
+        | subject | Y | Object | Subject | {{subject}} |
+
+        | html | Y | String | HTML code | <html><body><div><h2>Hola {{name}}
+        </div></h2> <p>Se le ha enviado {{amount}} pesos a la cuenta CLABE:
+        {{account}}. </p></body></html> |
+
+        | text | Y | String | Text of Message | Hola {{name}} Se le ha enviado
+        {{amount}} pesos a la cuenta CLABE: {{account}}. |
+      x-internal: true
+      operationId: Send_emails
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              $ref: '#/components/headers/ExpiresAfter'
+              content: null
+              application/json:
+                schema:
+                  type: object
+                  example:
+                    status: success
+                    message:
+                      code: 1
+                      total: 0
+                      data: []
+              required: true
+            application/xml:
+              schema:
+                type: string
+            text/csv:
+              schema:
+                type: string
+        '400':
+          description: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-internal: true
+              type: object
+              example:
+                status: success
+                message:
+                  code: 1
+                  total: 0
+                  data: []
+        required: true
+components:
+  securitySchemes:
+    main_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://example.com/api/oauth/dialog
+          scopes:
+            read:users: read users info
+            write:users: modify or remove users
+    api_key:
+      type: apiKey
+      in: header
+      name: api_key
+    basic_auth:
+      type: http
+      scheme: basic
+  headers:
+    ExpiresAfter:
+      description: date in UTC when token expires
+      schema:
+        type: string
+        format: date-time
+security:
+  - main_auth: []
+  - api_key: []
