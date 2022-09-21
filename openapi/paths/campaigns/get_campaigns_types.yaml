@@ -1,0 +1,78 @@
+get:
+  tags:
+    - Campaigns
+  summary: Get Campaigns Types
+  description: 
+    $ref: ../../files_descriptions/campaigns/info-get-campaign_types.md
+  x-internal: true
+  operationId: get_campaigns_types
+  responses:
+    '200':
+      description: OK
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        X-Expires-After:
+          $ref: ../../components/headers/ExpiresAfter.yaml
+          content:
+          application/json:
+            schema:
+              type: object
+              example: {
+                "status": "success",
+                "message": {
+                    "code": 1,
+                    "total": 2,
+                    "data": [
+                        {
+                            "id": 2,
+                            "name": "Grupos",
+                            "weight": 0
+                        },
+                        {
+                            "id": 1,
+                            "name": "Cuantificables",
+                            "weight": 1
+                        }
+                    ]
+                }
+            }
+          required: true
+        application/xml:
+          schema:
+            type: string
+        text/csv:
+          schema:
+            type: string
+    '400': 
+      description: Unauthorized
+  requestBody:
+    content:
+      application/json:
+        schema:
+          x-internal: true
+          type: object
+          example: {
+            "status": "success",
+            "message": {
+                "code": 1,
+                "total": 2,
+                "data": [
+                    {
+                        "id": 2,
+                        "name": "Grupos",
+                        "weight": 0
+                    },
+                    {
+                        "id": 1,
+                        "name": "Cuantificables",
+                        "weight": 1
+                    }
+                ]
+            }
+        }
+    required: true
+  

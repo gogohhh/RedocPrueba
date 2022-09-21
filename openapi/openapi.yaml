@@ -1,0 +1,208 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Dynamicore API
+  termsOfService: 'https://example.com/terms/'
+  contact:
+    email: contact@example.com
+    url: 'http://example.com/contact'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: 'https://dynamicore.io/assets/images/fintcore.svg'
+  description:
+    $ref: ./info-description.md
+tags:
+  - name: Authentication
+    description: 
+      $ref: ./files_descriptions/authorization/info-auth.md
+  - name: Types
+    description: ''
+  - name: Catalogs
+    description: ''
+  - name: Clients
+    description: ''
+  - name: Accounts
+    description: ''
+  - name: MARKETPLACE
+    description: ''
+  - name: SAT
+    description: ''
+  - name: Mifiel
+    description: ''
+  - name: Conekta
+    description: ''
+  - name: Errors
+    description: 
+      $ref: ./files_descriptions/errors/info-erros.md
+  - name: Campaigns
+    description: ''
+  - name: Users
+    description: ''
+  - name: Company
+    description: ''
+  - name: Products
+    description: ''
+  - name: Diagrams
+    description: ''
+  - name: Flows
+    description: ''
+  - name: Nodes
+    description: ''
+  - name: Class
+    description: ''
+  - name: Logs
+    description: ''
+  - name: Notifications
+    description: ''
+  - name: Email
+    description: ''
+servers:
+  - url: 'https://{tenant}/api/v1'
+    variables:
+      tenant:
+        default: www
+        description: Your tenant id
+  - url: 'https://example.com/api/v1'
+paths:
+  /types-clients: 
+    $ref: paths/types-clients.yaml
+  /types:
+    $ref: 'paths/types-products.yaml'
+  /catalogs: 
+    $ref: 'paths/catalogs-clients.yaml'
+  /https://api.dynamicore.io/private/clients:
+    $ref: paths/catalogs-products.yaml
+  /create-clients:
+    $ref: paths/create-client.yaml
+  /update-clients:
+    $ref: paths/update-client.yaml
+  /list-clients:
+    $ref: paths/list-clients.yaml
+  /upload-documents:
+    $ref: paths/upload-documents.yaml
+  /get-sat:
+    $ref: paths/get-sat.yaml
+  /get-credit-store:
+    $ref: paths/get-credit-store.yaml
+  /create-accounts:
+    $ref: paths/accounts/create-accounts.yaml
+  /customer-account:
+    $ref: paths/accounts/customer-account.yaml
+  /account-transactions:
+    $ref: paths/accounts/account-transaction.yaml
+  /account-payments:
+    $ref: paths/accounts/account-payments.yaml
+  /load-keys:
+    $ref: paths/marketplace/load-keys.yaml
+  /sync-data:
+    $ref: paths/marketplace/sync-data.yaml
+  /get-data:
+    $ref: paths/marketplace/get-data.yaml
+  /create-document:
+    $ref: paths/mifiel/create-document.yaml
+  /widget:
+    $ref: paths/mifiel/widget.yaml
+  /get-document:
+    $ref: paths/mifiel/get-document.yaml
+  /create_order:
+    $ref: paths/conekta/create_order.yaml
+  /get_order:
+    $ref: paths/conekta/get_order.yaml
+  /get_reference_pending:
+    $ref: paths/conekta/get_reference.yaml
+  /get_campaign:
+    $ref: paths/campaigns/get-campaigns.yaml
+  /eval_campaign:
+    $ref: paths/campaigns/eval-campaign.yaml
+  /get_campaigns_tytes:
+    $ref: paths/campaigns/get_campaigns_types.yaml
+  /create_campaign:
+    $ref: paths/campaigns/create_campaign.yaml
+  /update_campaign:
+    $ref: paths/campaigns/update_campaign.yaml
+  /delete_campaign:
+    $ref: paths/campaigns/delete_campaign.yaml
+  /get_users:
+    $ref: paths/users/get_users.yaml
+  /new_user:
+    $ref: paths/users/new_user.yaml
+  /get_binnacle:
+    $ref: paths/users/get_binnacle.yaml
+  /create_owner:
+    $ref: paths/users/create_owner.yaml
+  /user_client:
+    $ref: paths/users/user_client.yaml
+  /get_contrab:
+    $ref: paths/company/get_contrab.yaml
+  /create_contrab:
+    $ref: paths/company/create_contrab.yaml
+  /update_contrab:
+    $ref: paths/company/update_contrab.yaml
+  /update_company:
+    $ref: paths/company/update_company.yaml
+  /get_products:
+    $ref: paths/products/get_products.yaml
+  /create_product:
+    $ref: paths/products/create_product.yaml
+  /update_product:
+    $ref: paths/products/update_product.yaml
+  /products_types:
+    $ref: paths/products/products_types.yaml
+  /create_product_type:
+    $ref: paths/products/create_product_type.yaml
+  /update_product_type:
+    $ref: paths/products/update_product_type.yaml
+  /get_product_operation:
+    $ref: paths/products/get_product_operation.yaml
+  /create_product_operation:
+    $ref: paths/products/create_product_opration.yaml
+  /delete_product_operation:
+    $ref: paths/products/delete_product_operation.yaml
+  /get_flows:
+    $ref: paths/flows/get_flows.yaml
+  /create_flow:
+    $ref: paths/flows/create_flow.yaml
+  /update_flow:
+    $ref: paths/flows/update_flow.yaml
+  /get_flow_types:
+    $ref: paths/flows/get_flow_types.yaml
+  /get_node:
+    $ref: paths/nodes/get_node.yaml
+  /create_node:
+    $ref: paths/nodes/create_node.yaml
+  /update_node:
+    $ref: paths/nodes/update_node.yaml
+  /get_class:
+    $ref: paths/class/get_class.yaml
+  /create_class:
+    $ref: paths/class/create_class.yaml
+  /update_class:
+    $ref: paths/class/update_class.yaml
+  /get_diagrams_logs:
+    $ref: paths/logs/get_diagrams_logs.yaml
+  /add_diagrams_logs:
+    $ref: paths/logs/add_diagrams_logs.yaml
+  /send_mail:
+    $ref: paths/notifications/send_mail.yaml
+components:
+  securitySchemes:
+    main_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'http://example.com/api/oauth/dialog'
+          scopes:
+            'read:users': read users info
+            'write:users': modify or remove users
+    api_key:
+      type: apiKey
+      in: header
+      name: api_key
+    basic_auth:
+      type: http
+      scheme: basic
+security:
+  - main_auth: []
+  - api_key: []

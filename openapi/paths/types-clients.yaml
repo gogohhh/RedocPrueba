@@ -1,0 +1,56 @@
+post:
+  tags:
+    - Types
+  summary: Types of clients
+  description: 
+    $ref: ../files_descriptions/types/info-types.md
+  operationId: type_clients
+  security:
+    - api_key: []
+    - basic_auth: []
+  responses:
+    '200':
+      description: OK
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        X-Expires-After:
+          $ref: ../components/headers/ExpiresAfter.yaml
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {
+                  "status": "success",
+                  "message": {
+                    "code": 1,
+                    "total": 0,
+                    "data": []
+                  }
+                }
+          required: true
+        application/xml:
+          schema:
+            type: string
+        text/csv:
+          schema:
+            type: string
+    '400': 
+      description: Unauthorized
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          example: {
+            "status": "success",
+            "message": {
+              "code": 1,
+              "total": 0,
+              "data": []
+            }
+          }
+    required: true
