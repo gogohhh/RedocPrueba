@@ -2,12 +2,15 @@
   "name": "acme-api",
   "version": "1.0.0",
   "dependencies": {
-    "@redocly/cli": "1.0.0-beta.105"
+    "@redocly/cli": "1.0.0-beta.105",
+    "gh-pages": "^4.0.0"
   },
   "private": true,
   "scripts": {
     "start": "redocly preview-docs",
     "build": "redocly bundle -o dist",
-    "test": "redocly lint"
+    "test": "redocly lint",
+    "create-html": "redoc-cli bundle openapi.yaml" //Antes de correr este script, correr el script de build, posteriormente 
+    //entrar a la carpeta dist y es aqui donde se ejecuta esta script.
   }
 }

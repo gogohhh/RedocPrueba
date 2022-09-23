@@ -2,10 +2,10 @@ openapi: 3.1.0
 info:
   version: 1.0.0
   title: Dynamicore API
-  termsOfService: 'https://example.com/terms/'
+  termsOfService: 'https://dynamicore.io/'
   contact:
     email: contact@example.com
-    url: 'http://example.com/contact'
+    url: 'https://dynamicore.io/'
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'

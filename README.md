@@ -19,6 +19,11 @@ Starts the reference docs preview server.
 #### `npm run build`
 Bundles the definition to the dist folder.
 
+## Create build html
+### `npm run create-html`
+
+After to create de build dist, enter to /dist directory, is here where the script is executed.
+
 #### `npm test`
 Validates the definition.
 
