@@ -20,9 +20,13 @@ Starts the reference docs preview server.
 Bundles the definition to the dist folder.
 
 ## Create build html
-### `npm run create-html`
 
-After to create de build dist, enter to /dist directory, is here where the script is executed.
+### `npm run create-html`
+Antes de correr este script, correr el script de build.
+
+## En caso de error correr:
+### `npx redoc-cli@0.10.3 bundle ./dist/openapi.yaml --output ./dist/index.html`
+Este comando usa una version de redoc-cli funcional que crea el index.html para usar en producción.
 
 #### `npm test`
 Validates the definition.

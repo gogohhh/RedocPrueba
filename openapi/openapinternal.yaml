@@ -5,7 +5,7 @@ info:
   title: Internal API
   termsOfService: 'https://example.com/terms/'
   contact:
-    email: contact@example.com
+    email: support@dynamicore.io
     url: 'http://example.com/contact'
   license:
     name: Apache 2.0
